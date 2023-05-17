@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/Main/FXMLDocument.fxml</file>
-            <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/Main/FXMLDocumentController.java</file>
-            <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/Main/Trabalho_N2_Desenvolvimento.java</file>
+            <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/controle/TelaLoginController.java</file>
+            <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/dao/UsuarioDao.java</file>
+            <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/view/TelaLogin.fxml</file>
         </group>
     </open-files>
 </project-private>
