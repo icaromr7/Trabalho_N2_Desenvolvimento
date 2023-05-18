@@ -4,10 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class CadTipoDeProcessoController {
@@ -31,13 +33,22 @@ public class CadTipoDeProcessoController {
     private Button btnPesquisa;
 
     @FXML
-    private TextField codCat;
+    private ComboBox<?> cbClassificacao;
+
+    @FXML
+    private ComboBox<?> cbSituacao;
+
+    @FXML
+    private ComboBox<?> cbTpProcesso;
+
+    @FXML
+    private TextField codProcesso;
 
     @FXML
     private ComboBox<?> comboBoxTipo;
 
     @FXML
-    private TextField nomeTipoProcesso;
+    private DatePicker dtDataProcesso;
 
     @FXML
     private TabPane tabPane;
@@ -49,7 +60,19 @@ public class CadTipoDeProcessoController {
     private TableView<?> tableView;
 
     @FXML
+    private TextField txtCpfCliente;
+
+    @FXML
+    private TextArea txtDescricao;
+
+    @FXML
     private TextField txtFieldPesquisa;
+
+    @FXML
+    private TextField txtNomeCliente;
+
+    @FXML
+    private TextField txtOabAdvogado;
 
     @FXML
     void btnAlterarOnAction(ActionEvent event) {

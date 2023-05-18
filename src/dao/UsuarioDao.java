@@ -81,7 +81,33 @@ public class UsuarioDao extends Connect{
         ResultSet rs=null;
         try{
             con=this.getConnection();
-            ps = con.prepareStatement("SELECT * FROM usuario WHERE login="+u.getLogin());
+            ps = con.prepareStatement("SELECT * FROM usuario WHERE login=?");
+            ps.setString(1, u.getLogin());
+            rs=ps.executeQuery();
+            if(rs.next()){
+                aux.setLogin(rs.getString("login"));
+                aux.setSenha(rs.getString("senha"));
+                aux.setCargo(rs.getString("cargo"));
+            }else{
+                aux=null;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            closeConnection(con, ps, rs);           
+        }
+        return aux;
+    }
+    //Consultar
+    public Usuario consultar(String login) throws SQLException{
+        Connection con=null;
+        Usuario aux = new Usuario();
+        PreparedStatement ps= null;
+        ResultSet rs=null;
+        try{
+            con=this.getConnection();
+            ps = con.prepareStatement("SELECT * FROM usuario WHERE login=?");
+            ps.setString(1, login);
             rs=ps.executeQuery();
             if(rs.next()){
                 aux.setLogin(rs.getString("login"));
