@@ -43,9 +43,10 @@ public class UsuarioDao extends Connect{
         Connection con = null;
         try{
             con=this.getConnection();
-            PreparedStatement ps = con.prepareStatement("UPDATE usuario SET senha=? WHERE login=?");
-            ps.setString(1,u.getSenha());
-            ps.setString(2,u.getLogin());
+            PreparedStatement ps = con.prepareStatement("UPDATE usuario SET login=?,senha=? WHERE id=?");
+            ps.setString(1,u.getLogin());
+            ps.setString(2,u.getSenha());
+            ps.setInt(3,u.getId());
             intRetorno=ps.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
@@ -81,7 +82,7 @@ public class UsuarioDao extends Connect{
         ResultSet rs=null;
         try{
             con=this.getConnection();
-            ps = con.prepareStatement("SELECT * FROM usuario WHERE login=?");
+            ps = con.prepareStatement("SELECT * FROM usuario WHERE id=?");
             ps.setString(1, u.getLogin());
             rs=ps.executeQuery();
             if(rs.next()){

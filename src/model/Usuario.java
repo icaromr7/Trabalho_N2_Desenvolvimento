@@ -9,6 +9,7 @@ package model;
  * @author icaro
  */
 public class Usuario {
+    private int id;
     private String login;
     private String senha;
     private String cargo;
@@ -44,6 +45,14 @@ public class Usuario {
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
 }

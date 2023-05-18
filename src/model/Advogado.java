@@ -12,17 +12,12 @@ public class Advogado {
     private int id;
     private int oab;
     private String nome;
-    private String advlogin;
+    private int id_login;
 
     public Advogado() {
+        this.id= 0;
     }
-
-    public Advogado(int oab, String nome, String advlogin) {
-        this.oab = oab;
-        this.nome = nome;
-        this.advlogin = advlogin;
-    }
-
+ 
     public int getOab() {
         return oab;
     }
@@ -47,12 +42,14 @@ public class Advogado {
         this.nome = nome;
     }
 
-    public String getAdvlogin() {
-        return advlogin;
+    public int getId_login() {
+        return id_login;
     }
 
-    public void setAdvlogin(String advlogin) {
-        this.advlogin = advlogin;
+    public void setId_login(int id_login) {
+        this.id_login = id_login;
     }
+
+    
     
 }
