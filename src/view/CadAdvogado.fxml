@@ -12,58 +12,58 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="448.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.CadAdvogadoController">
+<AnchorPane id="AnchorPane" prefHeight="755.0" prefWidth="1604.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.CadAdvogadoController">
    <children>
-      <Pane prefHeight="651.0" prefWidth="801.0">
+      <Pane prefHeight="755.0" prefWidth="1604.0">
          <children>
-            <TabPane fx:id="tabPane" prefHeight="651.0" prefWidth="801.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="tabPane" prefHeight="755.0" prefWidth="1604.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab fx:id="abaCadastro" text="Cadastro">
                      <content>
-                        <Pane prefHeight="381.0" prefWidth="560.0">
+                        <Pane prefHeight="684.0" prefWidth="1377.0">
                            <children>
-                              <Label layoutX="100.0" layoutY="127.0" text="OAB">
+                              <Label layoutX="463.0" layoutY="168.0" text="OAB">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="59.0" layoutY="179.0" text="Nome do Advogado">
+                              <Label layoutX="422.0" layoutY="220.0" text="Nome do Advogado">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="CodOAB" layoutX="158.0" layoutY="128.0" prefHeight="25.0" prefWidth="187.0" />
-                              <TextField fx:id="nomeAdvogado" layoutX="239.0" layoutY="180.0" prefHeight="25.0" prefWidth="533.0" />
-                              <Label layoutX="118.0" layoutY="222.0" text="Login">
+                              <TextField fx:id="CodOAB" layoutX="521.0" layoutY="169.0" prefHeight="25.0" prefWidth="187.0" />
+                              <TextField fx:id="nomeAdvogado" layoutX="602.0" layoutY="221.0" prefHeight="25.0" prefWidth="533.0" />
+                              <Label layoutX="481.0" layoutY="263.0" text="Login">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="116.0" layoutY="259.0" text="Senha">
+                              <Label layoutX="479.0" layoutY="300.0" text="Senha">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtLogin" layoutX="184.0" layoutY="223.0" prefHeight="25.0" prefWidth="241.0" />
-                              <TextField fx:id="txtSenha" layoutX="184.0" layoutY="260.0" prefHeight="25.0" prefWidth="241.0" />
-                              <Button fx:id="btnIncluir" layoutX="76.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnIncluirOnAction" prefHeight="46.0" prefWidth="163.0" text="Incluir">
+                              <TextField fx:id="txtLogin" layoutX="547.0" layoutY="264.0" prefHeight="25.0" prefWidth="241.0" />
+                              <TextField fx:id="txtSenha" layoutX="547.0" layoutY="301.0" prefHeight="25.0" prefWidth="241.0" />
+                              <Button fx:id="btnIncluir" layoutX="439.0" layoutY="439.0" mnemonicParsing="false" onAction="#btnIncluirOnAction" prefHeight="46.0" prefWidth="163.0" text="Incluir">
                                  <font>
                                     <Font size="18.0" />
                                  </font></Button>
-                              <Button fx:id="btnAlterar" layoutX="316.0" layoutY="396.0" mnemonicParsing="false" onAction="#btnAlterarOnAction" prefHeight="49.0" prefWidth="169.0" text="Alterar">
+                              <Button fx:id="btnAlterar" layoutX="679.0" layoutY="437.0" mnemonicParsing="false" onAction="#btnAlterarOnAction" prefHeight="49.0" prefWidth="169.0" text="Alterar">
                                  <font>
                                     <Font size="18.0" />
                                  </font></Button>
-                              <Button fx:id="btnExcluir" layoutX="568.0" layoutY="396.0" mnemonicParsing="false" onAction="#btnExcluirOnAction" prefHeight="49.0" prefWidth="162.0" text="Excluir">
+                              <Button fx:id="btnExcluir" layoutX="931.0" layoutY="437.0" mnemonicParsing="false" onAction="#btnExcluirOnAction" prefHeight="49.0" prefWidth="162.0" text="Excluir">
                                  <font>
                                     <Font size="18.0" />
                                  </font></Button>
-                              <Label layoutX="100.0" layoutY="87.0" text="ID">
+                              <Label layoutX="463.0" layoutY="128.0" text="ID">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtID" editable="false" layoutX="127.0" layoutY="88.0" prefHeight="25.0" prefWidth="125.0" />
+                              <TextField fx:id="txtID" editable="false" layoutX="490.0" layoutY="129.0" prefHeight="25.0" prefWidth="125.0" />
                            </children>
                         </Pane>
                      </content>
@@ -72,24 +72,24 @@
                      <content>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label layoutX="68.0" layoutY="65.0" text="Tipo de pesquisa">
+                              <Label layoutX="431.0" layoutY="18.0" text="Tipo de pesquisa">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="labelPesquisa" layoutX="110.0" layoutY="122.0" text="Pesquisa">
+                              <Label fx:id="labelPesquisa" layoutX="473.0" layoutY="75.0" text="Pesquisa">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="labelTableView" layoutX="113.0" layoutY="169.0" text="Advogado(s) selecionado(s)">
+                              <Label fx:id="labelTableView" layoutX="476.0" layoutY="122.0" text="Advogado(s) selecionado(s)">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <ComboBox fx:id="comboBoxPesquisa" layoutX="236.0" layoutY="66.0" prefHeight="25.0" prefWidth="225.0" />
-                              <TextField fx:id="txtFieldPesquisa" layoutX="203.0" layoutY="123.0" prefHeight="25.0" prefWidth="384.0" />
-                              <TableView fx:id="tableView" layoutX="51.0" layoutY="215.0" prefHeight="355.0" prefWidth="699.0">
+                              <ComboBox fx:id="comboBoxPesquisa" layoutX="599.0" layoutY="19.0" prefHeight="25.0" prefWidth="225.0" />
+                              <TextField fx:id="txtFieldPesquisa" layoutX="566.0" layoutY="76.0" prefHeight="25.0" prefWidth="384.0" />
+                              <TableView fx:id="tableView" layoutX="410.0" layoutY="166.0" prefHeight="443.0" prefWidth="842.0">
                                 <columns>
                                   <TableColumn fx:id="tableColumnNomeAdvogado" prefWidth="75.0" text="Nome" />
                                 </columns>
@@ -97,7 +97,7 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Button fx:id="btnPesquisa" layoutX="608.0" layoutY="123.0" mnemonicParsing="false" onAction="#btnPesquisaOnAction" text="OK" />
+                              <Button fx:id="btnPesquisa" layoutX="971.0" layoutY="76.0" mnemonicParsing="false" onAction="#btnPesquisaOnAction" text="OK" />
                            </children>
                         </Pane>
                      </content>

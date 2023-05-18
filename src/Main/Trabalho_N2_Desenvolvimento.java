@@ -18,7 +18,7 @@ public class Trabalho_N2_Desenvolvimento extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/TelaLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/TelaPrincipal.fxml"));
         
         Scene scene = new Scene(root);
         

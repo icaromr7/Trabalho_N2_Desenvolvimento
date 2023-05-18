@@ -12,56 +12,56 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="542.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.CadTipoDeProcessoController">
+<AnchorPane id="AnchorPane" prefHeight="755.0" prefWidth="1604.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.CadTipoDeProcessoController">
    <children>
-      <Pane prefHeight="542.0" prefWidth="802.0" style="-fx-background-color: #008080;">
+      <Pane prefHeight="755.0" prefWidth="1604.0" style="-fx-background-color: #008080;">
          <children>
-            <TabPane fx:id="tabPane" layoutY="-2.0" prefHeight="542.0" prefWidth="802.0" style="-fx-background-color: #089032;" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="tabPane" layoutY="-2.0" prefHeight="755.0" prefWidth="1604.0" style="-fx-background-color: #089032;" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab fx:id="abaCadastro" text="Cadastro">
                      <content>
-                        <Pane prefHeight="523.0" prefWidth="793.0" style="-fx-background-color: #008B8B;">
+                        <Pane prefHeight="755.0" prefWidth="1604.0" style="-fx-background-color: #008B8B;">
                            <children>
-                              <Label layoutX="60.0" layoutY="129.0" text="Código" textFill="#222121">
+                              <Label layoutX="506.0" layoutY="207.0" text="Código" textFill="#222121">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="60.0" layoutY="182.0" text="Tipo de Processo">
+                              <Label layoutX="506.0" layoutY="260.0" text="Tipo de Processo">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="codCat" editable="false" layoutX="138.0" layoutY="130.0" prefHeight="25.0" prefWidth="76.0" />
-                              <TextField fx:id="nomeTipoProcesso" layoutX="228.0" layoutY="183.0" prefHeight="25.0" prefWidth="453.0" />
-                              <Button fx:id="btnIncluir" layoutX="66.0" layoutY="310.0" mnemonicParsing="false" onAction="#btnIncluirOnAction" prefHeight="59.0" prefWidth="168.0" text="Incluir" />
-                              <Button fx:id="btnAlterar" layoutX="311.0" layoutY="310.0" mnemonicParsing="false" onAction="#btnAlterarOnAction" prefHeight="59.0" prefWidth="168.0" text="Alterar" />
-                              <Button fx:id="btnExcluir" layoutX="560.0" layoutY="310.0" mnemonicParsing="false" onAction="#btnExcluirOnAction" prefHeight="59.0" prefWidth="168.0" text="Excluir" />
+                              <TextField fx:id="codCat" editable="false" layoutX="584.0" layoutY="208.0" prefHeight="25.0" prefWidth="76.0" />
+                              <TextField fx:id="nomeTipoProcesso" layoutX="674.0" layoutY="261.0" prefHeight="25.0" prefWidth="453.0" />
+                              <Button fx:id="btnIncluir" layoutX="512.0" layoutY="388.0" mnemonicParsing="false" onAction="#btnIncluirOnAction" prefHeight="59.0" prefWidth="168.0" text="Incluir" />
+                              <Button fx:id="btnAlterar" layoutX="757.0" layoutY="388.0" mnemonicParsing="false" onAction="#btnAlterarOnAction" prefHeight="59.0" prefWidth="168.0" text="Alterar" />
+                              <Button fx:id="btnExcluir" layoutX="1006.0" layoutY="388.0" mnemonicParsing="false" onAction="#btnExcluirOnAction" prefHeight="59.0" prefWidth="168.0" text="Excluir" />
                            </children>
                         </Pane>
                      </content>
                   </Tab>
                 <Tab fx:id="abaPesquisa" text="Pesquisa">
                      <content>
-                        <Pane prefHeight="493.0" prefWidth="802.0" style="-fx-background-color: #008B8B;">
+                        <Pane prefHeight="755.0" prefWidth="1604.0" style="-fx-background-color: #008B8B;">
                            <children>
-                              <Label layoutX="58.0" layoutY="80.0" text="Tipo de pesquisa">
+                              <Label layoutX="498.0" layoutY="83.0" text="Tipo de pesquisa">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="105.0" layoutY="129.0" text="Pesquisa">
+                              <Label layoutX="545.0" layoutY="132.0" text="Pesquisa">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtFieldPesquisa" layoutX="193.0" layoutY="130.0" prefHeight="25.0" prefWidth="466.0" />
-                              <Label layoutX="125.0" layoutY="194.0" text="Categoria(s) selecionada(s)">
+                              <TextField fx:id="txtFieldPesquisa" layoutX="633.0" layoutY="133.0" prefHeight="25.0" prefWidth="466.0" />
+                              <Label layoutX="565.0" layoutY="197.0" text="Categoria(s) selecionada(s)">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <TableView fx:id="tableView" layoutX="65.0" layoutY="233.0" prefHeight="251.0" prefWidth="679.0">
+                              <TableView fx:id="tableView" layoutX="505.0" layoutY="236.0" prefHeight="251.0" prefWidth="679.0">
                                 <columns>
                                   <TableColumn fx:id="tableColumnNomeCat" prefWidth="75.0" text="Nome" />
                                 </columns>
@@ -69,8 +69,8 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Button fx:id="btnPesquisa" layoutX="692.0" layoutY="130.0" mnemonicParsing="false" onAction="#btnPesquisaOnAction" text="OK" />
-                              <ComboBox fx:id="comboBoxTipo" layoutX="210.0" layoutY="81.0" prefHeight="25.0" prefWidth="204.0" />
+                              <Button fx:id="btnPesquisa" layoutX="1132.0" layoutY="133.0" mnemonicParsing="false" onAction="#btnPesquisaOnAction" text="OK" />
+                              <ComboBox fx:id="comboBoxTipo" layoutX="650.0" layoutY="84.0" prefHeight="25.0" prefWidth="204.0" />
                            </children>
                         </Pane>
                      </content>
