@@ -1,14 +1,24 @@
 package controle;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collection;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public class TelaPrincipalController implements Initializable{
@@ -36,6 +46,9 @@ public class TelaPrincipalController implements Initializable{
     
     @FXML
     private Pane paneExibir;
+    
+    @FXML
+    private Pane painelSuperior;
 
     @FXML
     void btnCadAdvogadoOnAction(ActionEvent event) throws IOException {
@@ -69,6 +82,8 @@ public class TelaPrincipalController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
     }
+    
 
 }

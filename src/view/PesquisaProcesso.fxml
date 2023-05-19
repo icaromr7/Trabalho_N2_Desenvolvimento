@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="755.0" prefWidth="1604.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.PesquisaProcessoController">
    <children>
-      <Pane layoutY="-2.0" prefHeight="755.0" prefWidth="1604.0" style="-fx-background-color: #4682B4;">
+      <Pane layoutY="-2.0" prefHeight="755.0" prefWidth="1604.0">
          <children>
             <Label layoutX="330.0" layoutY="40.0" text="Pesquisa CPF do Cliente">
                <font>
@@ -41,7 +41,7 @@
             </Label>
             <ComboBox fx:id="cbAdvogado" layoutX="860.0" layoutY="88.0" prefHeight="25.0" prefWidth="305.0" />
             <Button fx:id="btnPesquisaAdvogado" layoutX="1188.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnPesquisaAdvogadoOnAction" text="OK" />
-            <TableView fx:id="tableView" layoutX="325.0" layoutY="296.0" prefHeight="445.0" prefWidth="954.0" style="-fx-background-color: #87CEEB;" tableMenuButtonVisible="true">
+            <TableView fx:id="tableView" layoutX="325.0" layoutY="296.0" prefHeight="445.0" prefWidth="954.0" tableMenuButtonVisible="true">
               <columns>
                 <TableColumn fx:id="ColunaCodigo" prefWidth="75.0" text="Código" />
                 <TableColumn fx:id="ColunaCliente" prefWidth="75.0" text="Cliente" />

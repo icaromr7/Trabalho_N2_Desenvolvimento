@@ -14,13 +14,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="755.0" prefWidth="1604.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.CadTipoDeProcessoController">
    <children>
-      <Pane prefHeight="755.0" prefWidth="1604.0" style="-fx-background-color: #008080;">
+      <Pane prefHeight="755.0" prefWidth="1604.0">
          <children>
-            <TabPane fx:id="tabPane" layoutY="-2.0" prefHeight="755.0" prefWidth="1604.0" style="-fx-background-color: #089032;" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="tabPane" layoutY="-2.0" prefHeight="755.0" prefWidth="1604.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab fx:id="abaCadastro" text="Cadastro">
                      <content>
-                        <Pane prefHeight="755.0" prefWidth="1604.0" style="-fx-background-color: #008B8B;">
+                        <Pane prefHeight="755.0" prefWidth="1604.0">
                            <children>
                               <Label layoutX="506.0" layoutY="207.0" text="Código" textFill="#222121">
                                  <font>
@@ -43,7 +43,7 @@
                   </Tab>
                 <Tab fx:id="abaPesquisa" text="Pesquisa">
                      <content>
-                        <Pane prefHeight="755.0" prefWidth="1604.0" style="-fx-background-color: #008B8B;">
+                        <Pane prefHeight="755.0" prefWidth="1604.0">
                            <children>
                               <Label layoutX="498.0" layoutY="83.0" text="Tipo de pesquisa">
                                  <font>

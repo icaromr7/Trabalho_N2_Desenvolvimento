@@ -14,15 +14,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="755.0" prefWidth="1604.0" style="-fx-background-color: #008080;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.CadProcessoController">
+<AnchorPane id="AnchorPane" prefHeight="755.0" prefWidth="1604.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.CadProcessoController">
    <children>
-      <Pane prefHeight="755.0" prefWidth="1604.0" style="-fx-background-color: #008080;">
+      <Pane prefHeight="755.0" prefWidth="1604.0">
          <children>
-            <TabPane fx:id="tabPane" layoutY="-2.0" prefHeight="755.0" prefWidth="1604.0" style="-fx-background-color: #008080;" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="tabPane" layoutY="-2.0" prefHeight="755.0" prefWidth="1604.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab fx:id="abaCadastro" text="Cadastro">
                      <content>
-                        <Pane prefHeight="689.0" prefWidth="1027.0" style="-fx-background-color: #008B8B;">
+                        <Pane prefHeight="689.0" prefWidth="1027.0">
                            <children>
                               <Label layoutX="497.0" layoutY="21.0" text="Código" textFill="#222121">
                                  <font>
@@ -96,7 +96,7 @@
                   </Tab>
                 <Tab fx:id="abaPesquisa" text="Pesquisa">
                      <content>
-                        <Pane prefHeight="689.0" prefWidth="1027.0" style="-fx-background-color: #008B8B;">
+                        <Pane prefHeight="689.0" prefWidth="1027.0">
                            <children>
                               <Label layoutX="505.0" layoutY="90.0" text="Tipo de pesquisa">
                                  <font>

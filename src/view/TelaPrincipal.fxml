@@ -7,10 +7,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1010.0" prefWidth="1920.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="controle.TelaPrincipalController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1010.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.TelaPrincipalController">
    <children>
-      <Pane fx:id="painel" layoutY="246.0" prefHeight="764.0" prefWidth="315.0">
+      <Pane fx:id="painel" layoutY="246.0" prefHeight="764.0" prefWidth="315.0" style="-fx-background-color: #005881;">
          <children>
             <Button fx:id="btnCadAdvogado" layoutX="29.0" layoutY="48.0" onAction="#btnCadAdvogadoOnAction" prefHeight="44.0" prefWidth="264.0" text="Cadastrar Advogado">
                <font>
@@ -36,7 +35,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#141414" height="755.0" layoutX="308.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="7.0" />
          </children>
       </Pane>
-      <Pane prefHeight="246.0" prefWidth="1920.0">
+      <Pane fx:id="painelSuperior" prefHeight="246.0" prefWidth="1920.0" style="-fx-background-color: #005881; -fx-background-image: url(./Slogan3.png);;">
          <children>
             <Button fx:id="btnDeslogar" layoutX="1767.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnDeslogarOnAction" prefHeight="25.0" prefWidth="103.0" text="Deslogar">
                <font>
