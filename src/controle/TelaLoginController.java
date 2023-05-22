@@ -2,6 +2,7 @@ package controle;
 
 import Main.Trabalho_N2_Desenvolvimento;
 import dao.UsuarioDao;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -11,12 +12,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -34,6 +38,7 @@ public class TelaLoginController implements Initializable{
     @FXML
     private TextField txtSenha;
     
+    private Stage stage;
     private Usuario usu;
     private UsuarioDao usudao = new UsuarioDao();
 
@@ -62,6 +67,9 @@ public class TelaLoginController implements Initializable{
                 protected Object handleGetObject(String key) {
                     if( key.contains("Usuario")){
                         return usu;
+                    }             
+                    else if( key.contains("stage")){
+                        return stage;
                     }
                     else{
                         return null;
@@ -73,9 +81,15 @@ public class TelaLoginController implements Initializable{
                     throw new UnsupportedOperationException("Not supported yet."); 
                 }
             };
-            Parent root = FXMLLoader.load(getClass().getResource("/view/MenuPrincipal.fxml"), rbJanela);
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/TelaPrincipal.fxml"), rbJanela);
+            Image image = new Image(new FileInputStream("C:\\Users\\icaro\\OneDrive\\Documentos\\NetBeansProjects\\Trabalho_N2_Desenvolvimento\\images\\Slogan3.png"));
+            ImageView imageView1 = new ImageView(image);
+            imageView1.setX(0); 
+            imageView1.setY(0);
+            imageView1.setFitHeight(246); 
+            imageView1.setFitWidth(1627);
+            Group root2 = new Group(root,imageView1);
+            Scene scene = new Scene(root2);
             stage.setScene(scene);
             stage.setResizable(false);
             //stage.initModality(Modality.APPLICATION_MODAL);
@@ -89,7 +103,8 @@ public class TelaLoginController implements Initializable{
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle rb) {
+        this.stage = (Stage) rb.getObject("stage");
         
     }
     public boolean verificaUsuario(Usuario u) throws SQLException{

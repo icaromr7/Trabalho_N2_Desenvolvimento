@@ -5,6 +5,8 @@
 package Main;
 
 import java.io.FileInputStream;
+import java.util.Enumeration;
+import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -22,16 +24,24 @@ public class Trabalho_N2_Desenvolvimento extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/TelaPrincipal.fxml"));
-        Image image = new Image(new FileInputStream("C:\\Users\\icaro\\OneDrive\\Documentos\\NetBeansProjects\\Trabalho_N2_Desenvolvimento\\images\\Slogan3.png"));
-        ImageView imageView1 = new ImageView(image);
-        imageView1.setX(0); 
-        imageView1.setY(0);
-        imageView1.setFitHeight(246); 
-        imageView1.setFitWidth(1627);
-        Group root2 = new Group(root,imageView1);
-        
-        Scene scene = new Scene(root2);
+        ResourceBundle rbJanela = new ResourceBundle() {
+                @Override
+                protected Object handleGetObject(String key) {
+                    if( key.contains("stage")){
+                        return stage;
+                    }
+                    else{
+                        return null;
+                    }
+                }
+
+                @Override
+                public Enumeration<String> getKeys() {
+                    throw new UnsupportedOperationException("Not supported yet."); 
+                }
+            };
+        Parent root = FXMLLoader.load(getClass().getResource("/view/TelaLogin.fxml"),rbJanela);     
+        Scene scene = new Scene(root);
         
         stage.setScene(scene);
         stage.setResizable(false);

@@ -37,12 +37,16 @@
       </Pane>
       <Pane fx:id="painelSuperior" prefHeight="246.0" prefWidth="1920.0" style="-fx-background-color: #005881; -fx-background-image: url(./Slogan3.png);;">
          <children>
-            <Button fx:id="btnDeslogar" layoutX="1767.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnDeslogarOnAction" prefHeight="25.0" prefWidth="103.0" text="Deslogar">
+            <Button fx:id="btnDeslogar" layoutX="1574.0" layoutY="163.0" mnemonicParsing="false" onAction="#btnDeslogarOnAction" prefHeight="25.0" prefWidth="103.0" text="Deslogar">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label fx:id="txtUsuario" layoutX="1662.0" layoutY="115.0" prefHeight="30.0" prefWidth="221.0" text="Nome do usuário" />
+            <Label fx:id="txtUsuario" layoutX="1574.0" layoutY="97.0" prefHeight="53.0" prefWidth="297.0" text="Nome do usuário">
+               <font>
+                  <Font size="36.0" />
+               </font></Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="246.0" layoutX="1553.0" stroke="BLACK" strokeType="INSIDE" width="7.0" />
          </children>
       </Pane>
       <Pane fx:id="paneExibir" layoutX="315.0" layoutY="255.0" prefHeight="755.0" prefWidth="1604.0" />

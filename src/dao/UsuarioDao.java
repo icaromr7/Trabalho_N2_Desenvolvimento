@@ -82,7 +82,7 @@ public class UsuarioDao extends Connect{
         ResultSet rs=null;
         try{
             con=this.getConnection();
-            ps = con.prepareStatement("SELECT * FROM usuario WHERE id=?");
+            ps = con.prepareStatement("SELECT * FROM usuario WHERE login=?");
             ps.setString(1, u.getLogin());
             rs=ps.executeQuery();
             if(rs.next()){
