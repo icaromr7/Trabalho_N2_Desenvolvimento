@@ -1,0 +1,27 @@
+.bgpane{
+ /*-fx-background-color: linear-gradient(to top right, #05f297  , hsba(265, 100%, 51%, 1) 90%);*/
+
+ -fx-background-color: #EAEEF4;
+
+}
+
+.sidepane{
+    -fx-background-color: linear-gradient(to top left,  hsba(240, 100%, 51%, 1)  , hsba(180, 100%, 51%, 1) );
+    -fx-border-color: black;
+    -fx-border-width: 1.5px;
+}
+
+.btn-selected{
+    -fx-background-color:linear-gradient(to top left,  hsba(0, 100%, 51%, 1)  , hsba(180, 100%, 51%, 1) );
+    -fx-border-color: none;
+    -fx-border-width: 0px;
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50px;
+    -fx-border-style: solid;
+
+}
+.btn-inicial{
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+    -fx-border-color: none;
+    -fx-border-width: 0px; 
+}

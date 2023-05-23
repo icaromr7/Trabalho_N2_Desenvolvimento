@@ -1,8 +1,10 @@
 package controle;
 
+import com.sun.javafx.css.StyleClassSet;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import static java.lang.ProcessBuilder.Redirect.to;
 import java.net.URL;
 import java.util.Collection;
 import java.util.Enumeration;
@@ -59,12 +61,14 @@ public class TelaPrincipalController implements Initializable{
 
     @FXML
     void btnCadAdvogadoOnAction(ActionEvent event) throws IOException {
+        AdvogadoSelecionado();
         Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadAdvogado.fxml"));
         paneExibir.getChildren().setAll(a);
     }
 
     @FXML
     void btnCadProcessoOnAction(ActionEvent event) throws IOException {
+        ProcessoSelecionado();
         Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadProcesso.fxml"));
         paneExibir.getChildren().setAll(a);
 
@@ -72,6 +76,7 @@ public class TelaPrincipalController implements Initializable{
 
     @FXML
     void btnCadTipoDeProcessoOnAction(ActionEvent event) throws IOException {
+        TpProcessoSelecionado();
         Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadTipoDeProcesso.fxml"));
         paneExibir.getChildren().setAll(a);
     }
@@ -104,6 +109,7 @@ public class TelaPrincipalController implements Initializable{
 
     @FXML
     void btnPsqProcessoOnACtion(ActionEvent event) throws IOException {
+        PsqProcessoSelecionado();
         Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/PesquisaProcesso.fxml"));
         paneExibir.getChildren().setAll(a);
     }
@@ -115,6 +121,53 @@ public class TelaPrincipalController implements Initializable{
         txtUsuario.setText(usu.getLogin());
         
     }
-    
-
+    //Alterar cor do button após opção selecionada
+    //Advogado
+    public void AdvogadoSelecionado(){
+        btnCadAdvogado.setStyle("-fx-background-color:linear-gradient(to top left,  hsba(0, 100%, 51%, 1)  , hsba(180, 100%, 51%, 1) );" +
+     "-fx-border-color: none;" +
+     "-fx-border-width: 0px;" +
+     "-fx-background-radius: 50px;" +
+     "-fx-border-radius: 50px;" +
+     "-fx-border-style: solid;");
+        btnCadProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+        btnCadTipoDeProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+        btnPsqProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+    }
+    //Tipo de processo
+    public void TpProcessoSelecionado(){
+        btnCadTipoDeProcesso.setStyle("-fx-background-color:linear-gradient(to top left,  hsba(0, 100%, 51%, 1)  , hsba(180, 100%, 51%, 1) );" +
+     "-fx-border-color: none;" +
+     "-fx-border-width: 0px;" +
+     "-fx-background-radius: 50px;" +
+     "-fx-border-radius: 50px;" +
+     "-fx-border-style: solid;");
+        btnCadProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+        btnCadAdvogado.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+        btnPsqProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+    }
+    //Processo
+    public void ProcessoSelecionado(){
+        btnCadProcesso.setStyle("-fx-background-color:linear-gradient(to top left,  hsba(0, 100%, 51%, 1)  , hsba(180, 100%, 51%, 1) );" +
+     "-fx-border-color: none;" +
+     "-fx-border-width: 0px;" +
+     "-fx-background-radius: 50px;" +
+     "-fx-border-radius: 50px;" +
+     "-fx-border-style: solid;");
+        btnCadTipoDeProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+        btnCadAdvogado.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+        btnPsqProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+    }
+    //Pesquisa Processo
+    public void PsqProcessoSelecionado(){
+        btnPsqProcesso.setStyle("-fx-background-color:linear-gradient(to top left,  hsba(0, 100%, 51%, 1)  , hsba(180, 100%, 51%, 1) );" +
+     "-fx-border-color: none;" +
+     "-fx-border-width: 0px;" +
+     "-fx-background-radius: 50px;" +
+     "-fx-border-radius: 50px;" +
+     "-fx-border-style: solid;");
+        btnCadTipoDeProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+        btnCadAdvogado.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+        btnCadProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+    }
 }

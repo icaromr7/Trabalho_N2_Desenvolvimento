@@ -96,8 +96,9 @@ public class TelaLoginController implements Initializable{
             stage.setScene(scene);
             stage.setResizable(false);
             //stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setX(0);
+            stage.setY(0);
             stage.showAndWait();
-            stage.close();
         }
         else{
             Utilidade.mensagemInformacao("Login ou senha incorreta!");           
