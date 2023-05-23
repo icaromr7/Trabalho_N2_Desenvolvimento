@@ -1,0 +1,34 @@
+
+
+.bgpane{
+ -fx-background-color: linear-gradient(to top right, #05f297  , hsba(265, 100%, 51%, 1) 90%);
+
+}
+
+.innerpane{
+    -fx-border-color : white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 12%;
+    /*-fx-box-shadow: 0 0 20px 0 #fff, 0 0 30px 0 #fff, 0 0 40px 0 #fff, 0 0 60px 0 #ff00de;*/
+}
+
+
+.textfield, .passwordfield{
+    -fx-background-color: none;
+    -fx-border-color: white;
+   /* -fx-border-style: none none solid none;*/
+    -fx-border-width : 0px 0px 1px 0px;
+    -fx-text-fill: white;
+}
+
+.loginlabel{
+    -fx-border-color: white;
+    -fx-border-width: 0px 0px 2px 0px;
+ }
+
+.buttons{
+    -fx-background-color: none;
+    -fx-border-color: white;
+    -fx-border-radius: 20 20 20 20;
+}
+

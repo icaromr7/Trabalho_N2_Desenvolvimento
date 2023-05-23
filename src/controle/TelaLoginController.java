@@ -8,6 +8,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -36,7 +39,7 @@ public class TelaLoginController implements Initializable{
     private TextField txtLogin;
 
     @FXML
-    private TextField txtSenha;
+    private PasswordField txtSenha;
     
     private Stage stage;
     private Usuario usu;
@@ -105,6 +108,22 @@ public class TelaLoginController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle rb) {
         this.stage = (Stage) rb.getObject("stage");
+        //foco Login
+        txtLogin.focusedProperty().addListener(new ChangeListener<Boolean>(){
+            public void changed(ObservableValue<? extends Boolean>arg0,Boolean arg1, Boolean arg2){
+                if(!arg2){
+                }else{
+                }
+            }
+        });
+        //foco Senha
+        txtSenha.focusedProperty().addListener(new ChangeListener<Boolean>(){
+            public void changed(ObservableValue<? extends Boolean>arg0,Boolean arg1, Boolean arg2){
+                if(!arg2){
+                }else{
+                }
+            }
+        });
         
     }
     public boolean verificaUsuario(Usuario u) throws SQLException{

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="755.0" prefWidth="1604.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.CadProcessoController">
+<AnchorPane id="AnchorPane" prefHeight="755.0" prefWidth="1604.0" styleClass="bgpane" stylesheets="@CadProcesso.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.CadProcessoController">
    <children>
       <Pane prefHeight="755.0" prefWidth="1604.0">
          <children>
@@ -24,72 +24,47 @@
                      <content>
                         <Pane prefHeight="689.0" prefWidth="1027.0">
                            <children>
-                              <Label layoutX="497.0" layoutY="21.0" text="Código" textFill="#222121">
+                              <TextField fx:id="codProcesso" editable="false" layoutX="413.0" layoutY="23.0" prefHeight="25.0" prefWidth="89.0" promptText="Código" styleClass="textfield" stylesheets="@CadProcesso.css">
                                  <font>
                                     <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="419.0" layoutY="61.0" text="Tipo de Processo">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="codProcesso" editable="false" layoutX="572.0" layoutY="22.0" prefHeight="25.0" prefWidth="76.0" />
-                              <Button fx:id="btnIncluir" layoutX="449.0" layoutY="634.0" mnemonicParsing="false" onAction="#btnIncluirOnAction" prefHeight="59.0" prefWidth="211.0" text="Incluir">
+                                 </font></TextField>
+                              <Button fx:id="btnIncluir" layoutX="414.0" layoutY="634.0" mnemonicParsing="false" onAction="#btnIncluirOnAction" prefHeight="59.0" prefWidth="211.0" styleClass="Btn" stylesheets="@CadProcesso.css" text="Incluir" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font></Button>
-                              <Button fx:id="btnAlterar" layoutX="759.0" layoutY="634.0" mnemonicParsing="false" onAction="#btnAlterarOnAction" prefHeight="59.0" prefWidth="194.0" text="Alterar">
+                              <Button fx:id="btnAlterar" layoutX="771.0" layoutY="634.0" mnemonicParsing="false" onAction="#btnAlterarOnAction" prefHeight="59.0" prefWidth="194.0" styleClass="Btn" stylesheets="@CadProcesso.css" text="Alterar" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font></Button>
-                              <Button fx:id="btnExcluir" layoutX="1066.0" layoutY="634.0" mnemonicParsing="false" onAction="#btnExcluirOnAction" prefHeight="59.0" prefWidth="220.0" text="Excluir">
+                              <Button fx:id="btnExcluir" layoutX="1101.0" layoutY="634.0" mnemonicParsing="false" onAction="#btnExcluirOnAction" prefHeight="59.0" prefWidth="220.0" styleClass="Btn" stylesheets="@CadProcesso.css" text="Excluir" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font></Button>
-                              <ComboBox fx:id="cbTpProcesso" layoutX="572.0" layoutY="62.0" prefWidth="150.0" />
-                              <Label layoutX="419.0" layoutY="106.0" text="Nome do Cliente">
+                              <ComboBox fx:id="cbTpProcesso" layoutX="412.0" layoutY="195.0" prefHeight="32.0" prefWidth="165.0" promptText="Tipo de Processo" />
+                              <TextField fx:id="txtNomeCliente" layoutX="414.0" layoutY="82.0" prefHeight="28.0" prefWidth="493.0" promptText="Nome do cliente" styleClass="textfield" stylesheets="@CadProcesso.css">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <TextField fx:id="txtCpfCliente" layoutX="940.0" layoutY="82.0" prefHeight="25.0" prefWidth="196.0" promptText="CPF do cliente" styleClass="textfield" stylesheets="@CadProcesso.css">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <DatePicker fx:id="dtDataProcesso" editable="false" layoutX="640.0" layoutY="195.0" prefHeight="32.0" prefWidth="180.0" promptText="Data do processo" />
+                              <TextField fx:id="txtOabAdvogado" layoutX="413.0" layoutY="138.0" prefHeight="40.0" prefWidth="339.0" promptText="Advogado Responsável (Inscrição OAB)" styleClass="textfield" stylesheets="@CadProcesso.css">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <ComboBox fx:id="cbSituacao" layoutX="414.0" layoutY="251.0" prefHeight="32.0" prefWidth="164.0" promptText="Situação do processo" />
+                              <ComboBox fx:id="cbClassificacao" layoutX="640.0" layoutY="251.0" prefHeight="32.0" prefWidth="188.0" promptText="Classificação do processo" />
+                              <Label layoutX="414.0" layoutY="317.0" text="Descrição do processo:" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtNomeCliente" layoutX="573.0" layoutY="107.0" prefHeight="28.0" prefWidth="493.0" />
-                              <Label layoutX="439.0" layoutY="149.0" text="CPF do Cliente">
+                              <TextArea fx:id="txtDescricao" layoutX="414.0" layoutY="352.0" prefHeight="248.0" prefWidth="907.0" promptText="Descrição" wrapText="true">
                                  <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtCpfCliente" layoutX="572.0" layoutY="150.0" prefHeight="25.0" prefWidth="196.0" />
-                              <DatePicker fx:id="dtDataProcesso" editable="false" layoutX="572.0" layoutY="193.0" />
-                              <Label layoutX="417.0" layoutY="192.0" text="Data do processo">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="376.0" layoutY="233.0" text="Advogado responsável (OAB)">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtOabAdvogado" layoutX="626.0" layoutY="235.0" prefHeight="25.0" prefWidth="282.0" />
-                              <Label layoutX="386.0" layoutY="276.0" text="Situação do processo">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="cbSituacao" layoutX="573.0" layoutY="277.0" prefHeight="25.0" prefWidth="189.0" />
-                              <Label layoutX="386.0" layoutY="316.0" text="Classificação do processo">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="cbClassificacao" layoutX="608.0" layoutY="317.0" prefHeight="25.0" prefWidth="180.0" />
-                              <Label layoutX="386.0" layoutY="356.0" text="Descrição do processo:">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextArea fx:id="txtDescricao" layoutX="448.0" layoutY="391.0" prefHeight="211.0" prefWidth="877.0" />
+                                    <Font size="14.0" />
+                                 </font></TextArea>
                            </children>
                         </Pane>
                      </content>
@@ -98,18 +73,11 @@
                      <content>
                         <Pane prefHeight="689.0" prefWidth="1027.0">
                            <children>
-                              <Label layoutX="505.0" layoutY="90.0" text="Tipo de pesquisa">
+                              <TextField fx:id="txtFieldPesquisa" layoutX="512.0" layoutY="147.0" prefHeight="40.0" prefWidth="371.0" promptText="Busca" styleClass="textfield" stylesheets="@CadProcesso.css">
                                  <font>
                                     <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="552.0" layoutY="139.0" text="Pesquisa">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="txtFieldPesquisa" layoutX="640.0" layoutY="140.0" prefHeight="25.0" prefWidth="466.0" />
-                              <Label layoutX="572.0" layoutY="204.0" text="Categoria(s) selecionada(s)">
+                                 </font></TextField>
+                              <Label layoutX="512.0" layoutY="205.0" text="Processo(s) selecionado(s):" textFill="WHITE">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -122,8 +90,8 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Button fx:id="btnPesquisa" layoutX="1139.0" layoutY="140.0" mnemonicParsing="false" onAction="#btnPesquisaOnAction" text="OK" />
-                              <ComboBox fx:id="comboBoxTipo" layoutX="657.0" layoutY="91.0" prefHeight="25.0" prefWidth="204.0" />
+                              <Button fx:id="btnPesquisa" layoutX="1141.0" layoutY="148.0" mnemonicParsing="false" onAction="#btnPesquisaOnAction" styleClass="Btn" stylesheets="@CadProcesso.css" text="OK" textFill="WHITE" />
+                              <ComboBox fx:id="comboBoxTipo" layoutX="908.0" layoutY="147.0" prefHeight="41.0" prefWidth="208.0" promptText="Tipo de pesquisa" />
                            </children>
                         </Pane>
                      </content>
