@@ -124,10 +124,10 @@ public class TelaPrincipalController implements Initializable{
     //Alterar cor do button após opção selecionada
     //Advogado
     public void AdvogadoSelecionado(){
-        btnCadAdvogado.setStyle("-fx-background-color:linear-gradient(to top left,  hsba(0, 100%, 51%, 1)  , hsba(180, 100%, 51%, 1) );" +
+        btnCadAdvogado.setStyle("-fx-background-color:#e0e1dd;" +
      "-fx-border-color: none;" +
      "-fx-border-width: 0px;" +
-     "-fx-background-radius: 50px;" +
+     "-fx-background-radius: 50px; -fx-text-fill: black;" +
      "-fx-border-radius: 50px;" +
      "-fx-border-style: solid;");
         btnCadProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
@@ -136,10 +136,10 @@ public class TelaPrincipalController implements Initializable{
     }
     //Tipo de processo
     public void TpProcessoSelecionado(){
-        btnCadTipoDeProcesso.setStyle("-fx-background-color:linear-gradient(to top left,  hsba(0, 100%, 51%, 1)  , hsba(180, 100%, 51%, 1) );" +
+        btnCadTipoDeProcesso.setStyle("-fx-background-color:#e0e1dd;" +
      "-fx-border-color: none;" +
      "-fx-border-width: 0px;" +
-     "-fx-background-radius: 50px;" +
+     "-fx-background-radius: 50px; -fx-text-fill: black;" +
      "-fx-border-radius: 50px;" +
      "-fx-border-style: solid;");
         btnCadProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
@@ -148,10 +148,10 @@ public class TelaPrincipalController implements Initializable{
     }
     //Processo
     public void ProcessoSelecionado(){
-        btnCadProcesso.setStyle("-fx-background-color:linear-gradient(to top left,  hsba(0, 100%, 51%, 1)  , hsba(180, 100%, 51%, 1) );" +
+        btnCadProcesso.setStyle("-fx-background-color:#e0e1dd;" +
      "-fx-border-color: none;" +
      "-fx-border-width: 0px;" +
-     "-fx-background-radius: 50px;" +
+     "-fx-background-radius: 50px; -fx-text-fill: black;" +
      "-fx-border-radius: 50px;" +
      "-fx-border-style: solid;");
         btnCadTipoDeProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
@@ -160,10 +160,10 @@ public class TelaPrincipalController implements Initializable{
     }
     //Pesquisa Processo
     public void PsqProcessoSelecionado(){
-        btnPsqProcesso.setStyle("-fx-background-color:linear-gradient(to top left,  hsba(0, 100%, 51%, 1)  , hsba(180, 100%, 51%, 1) );" +
+        btnPsqProcesso.setStyle("-fx-background-color:#e0e1dd;" +
      "-fx-border-color: none;" +
      "-fx-border-width: 0px;" +
-     "-fx-background-radius: 50px;" +
+     "-fx-background-radius: 50px; -fx-text-fill: black;" +
      "-fx-border-radius: 50px;" +
      "-fx-border-style: solid;");
         btnCadTipoDeProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");

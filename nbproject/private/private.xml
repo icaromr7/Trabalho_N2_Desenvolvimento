@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/view/TelaLogin.css</file>
-            <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/dao/TipoDeProcessoDao.java</file>
-            <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/view/CadProcesso.fxml</file>
+            <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/view/TelaPrincipal.fxml</file>
             <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/controle/TelaLoginController.java</file>
+            <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/controle/TelaPrincipalController.java</file>
+            <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/view/TelaPrincipal.css</file>
             <file>file:/C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/src/view/TelaLogin.fxml</file>
         </group>
     </open-files>

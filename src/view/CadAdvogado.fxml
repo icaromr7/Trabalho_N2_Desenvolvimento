@@ -14,9 +14,9 @@
 
 <AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="755.0" prefWidth="1604.0" styleClass="bgpane" stylesheets="@CadAdvogado.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.CadAdvogadoController">
    <children>
-      <Pane prefHeight="755.0" prefWidth="1604.0">
+      <Pane prefHeight="755.0" prefWidth="1604.0" styleClass="bgpane" stylesheets="@CadAdvogado.css">
          <children>
-            <TabPane fx:id="tabPane" prefHeight="755.0" prefWidth="1604.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="tabPane" prefHeight="755.0" prefWidth="1604.0" tabClosingPolicy="UNAVAILABLE" styleClass="tabpane" stylesheets="@CadAdvogado.css">
               <tabs>
                 <Tab fx:id="abaCadastro" text="Cadastro">
                      <content>

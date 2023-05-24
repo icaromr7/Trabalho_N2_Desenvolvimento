@@ -28,9 +28,12 @@
                <font>
                   <Font size="18.0" />
                </font></TextField>
-            <Button fx:id="btnVerDetalhe" layoutX="1197.0" layoutY="207.0" mnemonicParsing="false" onAction="#btnVerDetalheOnAction" styleClass="Btn" stylesheets="@PesquisaProcesso.css" text="Ver detalhes" textFill="WHITE" />
+            <Button fx:id="btnVerDetalhe" layoutX="1149.0" layoutY="207.0" mnemonicParsing="false" onAction="#btnVerDetalheOnAction" styleClass="Btn" stylesheets="@PesquisaProcesso.css" text="Ver detalhes" textFill="WHITE" />
             <ComboBox layoutX="830.0" layoutY="106.0" prefHeight="39.0" prefWidth="224.0" />
-            <Button layoutX="1115.0" layoutY="106.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="164.0" text="Buscar" />
+            <Button layoutX="1115.0" layoutY="106.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="164.0" text="Buscar">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
          </children>
       </Pane>
    </children>

@@ -1,12 +1,14 @@
 .bgpane{
  /*-fx-background-color: linear-gradient(to top right, #05f297  , hsba(265, 100%, 51%, 1) 90%);*/
 
- -fx-background-color: #EAEEF4;
+ -fx-background-color: linear-gradient(to top right, #0d1b2aff, #1b263bff);
+    -fx-border-color: black;
+    -fx-border-width: 1.5px;
 
 }
 
 .sidepane{
-    -fx-background-color: linear-gradient(to top left,  hsba(240, 100%, 51%, 1)  , hsba(180, 100%, 51%, 1) );
+    -fx-background-color: linear-gradient(to right ,#1b263bff, #415a77ff, #778da9ff);
     -fx-border-color: black;
     -fx-border-width: 1.5px;
 }
@@ -24,4 +26,20 @@
     -fx-background-color: rgba(0, 0, 0, 0.1);
     -fx-border-color: none;
     -fx-border-width: 0px; 
+}
+.btnDeslogar {
+    -fx-background-color: #e0e1dd;
+    -fx-font-family: 'Laksaman-bold';
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-border-color: none;
+    -fx-text-align: center;
+    -fx-text-fill: black;
+    -fx-border-radius: 0px;
+    -fx-background-radius: 20 20 20 20;
+}
+.paneUsu{
+    -fx-background-color: rgba(0, 0, 0, 0.0);
+    -fx-border-color: black;
+    -fx-border-width: 1px;
 }

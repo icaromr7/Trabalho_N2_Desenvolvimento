@@ -85,12 +85,12 @@ public class TelaLoginController implements Initializable{
                 }
             };
             Parent root = FXMLLoader.load(getClass().getResource("/view/TelaPrincipal.fxml"), rbJanela);
-            Image image = new Image(new FileInputStream("C:\\Users\\icaro\\OneDrive\\Documentos\\NetBeansProjects\\Trabalho_N2_Desenvolvimento\\images\\Slogan3.png"));
+            Image image = new Image(new FileInputStream("C:\\Users\\icaro\\OneDrive\\Documentos\\NetBeansProjects\\Trabalho_N2_Desenvolvimento\\images\\Slogan.png"));
             ImageView imageView1 = new ImageView(image);
-            imageView1.setX(0); 
-            imageView1.setY(0);
+            imageView1.setX(8); 
+            imageView1.setY(5);
             imageView1.setFitHeight(246); 
-            imageView1.setFitWidth(1627);
+            imageView1.setFitWidth(300);
             Group root2 = new Group(root,imageView1);
             Scene scene = new Scene(root2);
             stage.setScene(scene);

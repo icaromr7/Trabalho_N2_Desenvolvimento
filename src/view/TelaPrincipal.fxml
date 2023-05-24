@@ -8,43 +8,57 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1010.0" prefWidth="1920.0" styleClass="bgpane" stylesheets="@TelaPrincipal.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.TelaPrincipalController">
    <children>
-      <Pane fx:id="painel" layoutY="242.0" prefHeight="768.0" prefWidth="315.0" styleClass="sidepane" stylesheets="@TelaPrincipal.css">
+      <Pane fx:id="painel" prefHeight="1010.0" prefWidth="315.0" styleClass="bgpane" stylesheets="@TelaPrincipal.css">
          <children>
-            <Button fx:id="btnCadAdvogado" layoutX="29.0" layoutY="48.0" onAction="#btnCadAdvogadoOnAction" prefHeight="44.0" prefWidth="264.0"  styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Cadastrar Advogado" textFill="#fcf5f5">
+            <Button fx:id="btnCadAdvogado" layoutX="29.0" layoutY="314.0" onAction="#btnCadAdvogadoOnAction" prefHeight="44.0" prefWidth="264.0" styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Cadastrar Advogado" textFill="#fcf5f5">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnCadTipoDeProcesso" layoutX="29.0" layoutY="148.0" onAction="#btnCadTipoDeProcessoOnAction" prefHeight="44.0" prefWidth="264.0"  styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Cadastrar Tipo de Processo" textFill="#fcf5f5">
+            <Button fx:id="btnCadTipoDeProcesso" layoutX="29.0" layoutY="414.0" onAction="#btnCadTipoDeProcessoOnAction" prefHeight="44.0" prefWidth="264.0" styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Cadastrar Tipo de Processo" textFill="#fcf5f5">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnCadProcesso" layoutX="23.0" layoutY="248.0" onAction="#btnCadProcessoOnAction" prefHeight="44.0" prefWidth="264.0"  styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Cadastrar Processo" textFill="#fcf5f5">
+            <Button fx:id="btnCadProcesso" layoutX="23.0" layoutY="514.0" onAction="#btnCadProcessoOnAction" prefHeight="44.0" prefWidth="264.0" styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Cadastrar Processo" textFill="#fcf5f5">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnPsqProcesso" layoutX="23.0" layoutY="348.0" onAction="#btnPsqProcessoOnACtion" prefHeight="44.0" prefWidth="264.0"  styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Pesquisar Processo" textFill="#fcf5f5" >
+            <Button fx:id="btnPsqProcesso" layoutX="23.0" layoutY="614.0" onAction="#btnPsqProcessoOnACtion" prefHeight="44.0" prefWidth="264.0" styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Pesquisar Processo" textFill="#fcf5f5">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <Pane fx:id="painelSuperior" prefHeight="242.0" prefWidth="1920.0" style="-fx-background-image: url(./Slogan3.png);;" styleClass="sidepane" stylesheets="@TelaPrincipal.css">
+      <Pane fx:id="painelSuperior" layoutX="314.0" prefHeight="254.0" prefWidth="1606.0" style="-fx-background-image: url(./Slogan3.png);;" styleClass="sidepane" stylesheets="@TelaPrincipal.css">
          <children>
-            <Button fx:id="btnDeslogar" layoutX="1574.0" layoutY="163.0" mnemonicParsing="false" onAction="#btnDeslogarOnAction" prefHeight="25.0" prefWidth="103.0" text="Deslogar">
+            <Label layoutX="90.0" layoutY="14.0" prefHeight="163.0" prefWidth="522.0" text="Advocacia" textFill="#e1e1e1">
                <font>
-                  <Font size="14.0" />
+                  <Font size="112.0" />
                </font>
-            </Button>
-            <Label fx:id="txtUsuario" layoutX="1574.0" layoutY="97.0" prefHeight="53.0" prefWidth="297.0" text="Nome do usuário" textFill="WHITE" >
+            </Label>
+            <Label layoutX="643.0" layoutY="77.0" prefHeight="163.0" prefWidth="494.0" text="Camargo" textFill="#e1e1e1">
                <font>
-                  <Font size="36.0" />
-               </font></Label>
+                  <Font size="112.0" />
+               </font>
+            </Label>
+            <Pane fx:id="painelUsuario" layoutX="1213.0" layoutY="22.0" prefHeight="213.0" prefWidth="361.0" styleClass="paneUsu" stylesheets="@TelaPrincipal.css">
+               <children>
+                  <Button fx:id="btnDeslogar" layoutX="244.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnDeslogarOnAction" prefHeight="25.0" prefWidth="103.0" styleClass="btnDeslogar" stylesheets="@TelaPrincipal.css" text="Deslogar">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="txtUsuario" layoutX="14.0" layoutY="54.0" prefHeight="53.0" prefWidth="297.0" text="Nome do usuário" textFill="#1e1e1e">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
          </children>
       </Pane>
-      <Pane fx:id="paneExibir" layoutX="315.0" layoutY="242.0" prefHeight="768.0" prefWidth="1606.0" styleClass="sidepane" stylesheets="@TelaPrincipal.css" />
+      <Pane fx:id="paneExibir" layoutX="315.0" layoutY="253.0" prefHeight="757.0" prefWidth="1606.0" styleClass="sidepane" stylesheets="@TelaPrincipal.css" />
    </children>
 </AnchorPane>
