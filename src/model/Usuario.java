@@ -15,7 +15,7 @@ public class Usuario {
     private String cargo;
 
     public Usuario() {
-        this.cargo= "Administrador";
+        this.cargo= "Advogado";
     }
 
     public Usuario(String login, String senha) {

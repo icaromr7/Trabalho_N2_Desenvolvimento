@@ -1,12 +1,9 @@
 package controle;
 
-import com.sun.javafx.css.StyleClassSet;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import dao.AdvogadoDao;
 import java.io.IOException;
-import static java.lang.ProcessBuilder.Redirect.to;
 import java.net.URL;
-import java.util.Collection;
+import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -15,16 +12,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import model.Advogado;
 import model.Usuario;
 
 public class TelaPrincipalController implements Initializable{
@@ -56,20 +53,30 @@ public class TelaPrincipalController implements Initializable{
     @FXML
     private Pane painelSuperior;
     
+    @FXML
+    private Label labelCamargo;
+
+    @FXML
+    private Label labeladv;
+    
     private Stage stage;
     private Usuario usu;
-
+    private Advogado adv;
+    private AdvogadoDao advdao;
+    private ResourceBundle rbJanela;
+    
+    
     @FXML
     void btnCadAdvogadoOnAction(ActionEvent event) throws IOException {
         AdvogadoSelecionado();
-        Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadAdvogado.fxml"));
+        Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadAdvogado.fxml"),rbJanela);
         paneExibir.getChildren().setAll(a);
     }
 
     @FXML
     void btnCadProcessoOnAction(ActionEvent event) throws IOException {
         ProcessoSelecionado();
-        Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadProcesso.fxml"));
+        Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadProcesso.fxml"),rbJanela);
         paneExibir.getChildren().setAll(a);
 
     }
@@ -77,13 +84,13 @@ public class TelaPrincipalController implements Initializable{
     @FXML
     void btnCadTipoDeProcessoOnAction(ActionEvent event) throws IOException {
         TpProcessoSelecionado();
-        Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadTipoDeProcesso.fxml"));
+        Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadTipoDeProcesso.fxml"),rbJanela);
         paneExibir.getChildren().setAll(a);
     }
 
     @FXML
     void btnDeslogarOnAction(ActionEvent event) throws IOException {
-        ResourceBundle rbJanela = new ResourceBundle() {
+        rbJanela = new ResourceBundle() {
                 @Override
                 protected Object handleGetObject(String key) {
                     if( key.contains("stage")){
@@ -110,7 +117,7 @@ public class TelaPrincipalController implements Initializable{
     @FXML
     void btnPsqProcessoOnACtion(ActionEvent event) throws IOException {
         PsqProcessoSelecionado();
-        Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/PesquisaProcesso.fxml"));
+        Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/PesquisaProcesso.fxml"),rbJanela);
         paneExibir.getChildren().setAll(a);
     }
 
@@ -118,7 +125,43 @@ public class TelaPrincipalController implements Initializable{
     public void initialize(URL location, ResourceBundle rb) {
         this.stage = (Stage) rb.getObject("stage");
         this.usu = (Usuario) rb.getObject("Usuario");
+        advdao = new AdvogadoDao();
+        try {
+            this.adv = advdao.consultarID(usu.getId());
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         txtUsuario.setText(usu.getLogin());
+        DropShadow sombra = new DropShadow();
+        sombra.setColor(Color.BLACK); // Cor da sombra
+        sombra.setRadius(10); // Raio do desfoque da sombra
+        sombra.setOffsetX(3); // Deslocamento horizontal da sombra
+        sombra.setOffsetY(3);
+        Font.loadFont("file:///C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/font/Intro.otf", 8);
+        labelCamargo.setStyle("-fx-font-family: 'intro';");
+        labeladv.setStyle("-fx-font-family: 'intro';");
+        labelCamargo.setEffect(sombra);
+        labeladv.setEffect(sombra);
+        
+        rbJanela = new ResourceBundle() {
+                @Override
+                protected Object handleGetObject(String key) {
+                    if( key.contains("Usuario")){
+                        return usu;
+                    }
+                    else if(key.contains("Advogado")){
+                        return adv;
+                    }
+                    else{
+                        return null;
+                    }
+                }
+
+                @Override
+                public Enumeration<String> getKeys() {
+                    throw new UnsupportedOperationException("Not supported yet."); 
+                }
+            };
         
     }
     //Alterar cor do button após opção selecionada
@@ -170,4 +213,5 @@ public class TelaPrincipalController implements Initializable{
         btnCadAdvogado.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
         btnCadProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
     }
+    
 }

@@ -23,5 +23,8 @@ public class TipoDeProcesso {
     public void setTipoDoProcesso(String tipoDoProcesso) {
         this.tipoDoProcesso = tipoDoProcesso;
     }
-    
+    @Override
+    public String toString() {
+        return getTipoDoProcesso();
+    }
 }

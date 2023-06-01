@@ -86,6 +86,7 @@ public class UsuarioDao extends Connect{
             ps.setString(1, u.getLogin());
             rs=ps.executeQuery();
             if(rs.next()){
+                aux.setId(rs.getInt("id"));
                 aux.setLogin(rs.getString("login"));
                 aux.setSenha(rs.getString("senha"));
                 aux.setCargo(rs.getString("cargo"));
@@ -111,6 +112,7 @@ public class UsuarioDao extends Connect{
             ps.setString(1, login);
             rs=ps.executeQuery();
             if(rs.next()){
+                aux.setId(rs.getInt("id"));
                 aux.setLogin(rs.getString("login"));
                 aux.setSenha(rs.getString("senha"));
                 aux.setCargo(rs.getString("cargo"));

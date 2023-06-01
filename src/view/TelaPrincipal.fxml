@@ -34,14 +34,14 @@
       </Pane>
       <Pane fx:id="painelSuperior" layoutX="314.0" prefHeight="254.0" prefWidth="1606.0" style="-fx-background-image: url(./Slogan3.png);;" styleClass="sidepane" stylesheets="@TelaPrincipal.css">
          <children>
-            <Label layoutX="90.0" layoutY="14.0" prefHeight="163.0" prefWidth="522.0" text="Advocacia" textFill="#e1e1e1">
+            <Label fx:id="labeladv" layoutX="58.0" layoutY="14.0" prefHeight="163.0" prefWidth="552.0" styleClass="titulo" stylesheets="@TelaPrincipal.css" text="Advocacia" textFill="#e1e1e1">
                <font>
-                  <Font size="112.0" />
+                  <Font size="76.0" />
                </font>
             </Label>
-            <Label layoutX="643.0" layoutY="77.0" prefHeight="163.0" prefWidth="494.0" text="Camargo" textFill="#e1e1e1">
+            <Label fx:id="labelCamargo" layoutX="539.0" layoutY="96.0" prefHeight="152.0" prefWidth="561.0" styleClass="titulo" stylesheets="@TelaPrincipal.css" text="Camargo" textFill="#e1e1e1">
                <font>
-                  <Font size="112.0" />
+                  <Font size="96.0" />
                </font>
             </Label>
             <Pane fx:id="painelUsuario" layoutX="1213.0" layoutY="22.0" prefHeight="213.0" prefWidth="361.0" styleClass="paneUsu" stylesheets="@TelaPrincipal.css">

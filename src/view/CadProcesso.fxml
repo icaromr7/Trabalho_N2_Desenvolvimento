@@ -65,6 +65,11 @@
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextArea>
+                              <TextField fx:id="txtValorProcesso" layoutX="940.0" layoutY="138.0" onAction="#ValorProcessoOnAction" prefHeight="25.0" prefWidth="196.0" promptText="Valor do processo" styleClass="textfield" stylesheets="@CadProcesso.css">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
                            </children>
                         </Pane>
                      </content>
@@ -84,7 +89,8 @@
                               </Label>
                               <TableView fx:id="tableView" layoutX="512.0" layoutY="243.0" prefHeight="432.0" prefWidth="679.0">
                                 <columns>
-                                  <TableColumn fx:id="tableColumnNomeCat" prefWidth="75.0" text="Nome" />
+                                  <TableColumn fx:id="tableColumnId" prefWidth="75.0" text="ID" />
+                                    <TableColumn fx:id="tableColumnCpf_Cliente" prefWidth="75.0" text="Cpf_Cliente" />
                                 </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

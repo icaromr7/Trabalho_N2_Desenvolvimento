@@ -43,3 +43,10 @@
     -fx-border-color: black;
     -fx-border-width: 1px;
 }
+
+@font-face {
+
+    font-family: 'intro';
+
+    src: url("C:/Users/icaro/OneDrive/Documentos/NetBeansProjects/Trabalho_N2_Desenvolvimento/font/Intro.otf");
+}

@@ -182,4 +182,30 @@ public class AdvogadoDao extends Connect{
         }
         return ac;
     }
+    //Consultar
+    public Advogado consultarID(int id_login) throws SQLException{
+        Connection con=null;
+        Advogado aux = new Advogado();
+        PreparedStatement ps= null;
+        ResultSet rs=null;
+        try{
+            con=this.getConnection();
+            ps = con.prepareStatement("SELECT * FROM advogado WHERE id_login=?");
+            ps.setInt(1, id_login);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                aux.setId(rs.getInt("id"));
+                aux.setOab(rs.getInt("oab"));
+                aux.setNome(rs.getString("nome"));
+                aux.setId_login(rs.getInt("id_login"));
+            }else{
+                aux=null;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            closeConnection(con, ps, rs);           
+        }
+        return aux;
+    }
 }

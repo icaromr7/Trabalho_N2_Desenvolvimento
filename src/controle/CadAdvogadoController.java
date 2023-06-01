@@ -162,43 +162,36 @@ public class CadAdvogadoController implements Initializable{
         String msg="";
         if(CodOAB.getText().length()==0||CodOAB.getText().isEmpty()){
             msg+="Informe a OAB.\n";
+            conta++;
             CodOAB.setFocusTraversable(true);
         }
         if(nomeAdvogado.getText().length()==0||nomeAdvogado.getText().isEmpty()){
             msg+="Informe o nome do Advogado.\n";
+            conta++;
             nomeAdvogado.setFocusTraversable(true);
         }
         if(txtLogin.getText().length()==0||txtLogin.getText().isEmpty()){
             msg+="Informe o login.\n";
+            conta++;
             txtLogin.setFocusTraversable(true);
         }
         if(txtSenha.getText().length()==0||txtSenha.getText().isEmpty()){
             msg+="Informe a senha.\n";
+            conta++;
             txtSenha.setFocusTraversable(true);
         }
         if(verificaLogin(txtLogin.getText())==false){
             msg+="Esse login já existe.\n";
+            conta++;
         }
         if(verificaOAB(CodOAB.getText())==false){
             msg+="Essa OAB já foi cadastrada.\n";
+            conta++;
         }
         if(conta>0){
             Utilidade.mensagemInformacao(msg);
         }
         else{
-            advo = new Advogado();
-            advo.setOab(Integer.parseInt(CodOAB.getText()));
-            advo.setNome(nomeAdvogado.getText());
-            advodao = new AdvogadoDao();
-            try{
-                retorno = advodao.incluir(advo);
-                if(retorno)
-                    Utilidade.mensagemInformacao("INCLUSÃO DE ADVOGADO REALIZADA COM SUCESSO");
-                else
-                    Utilidade.mensagemErro("INCLUSÃO DE ADVOGADO NÃO REALIZADA");
-            }catch(SQLException e){
-                Utilidade.mensagemErro("ERRO DE INCLUSÃO DE ADVOGADO");
-            }
             usu = new Usuario();
             usu.setLogin(txtLogin.getText());
             usu.setSenha(txtSenha.getText());
@@ -212,6 +205,20 @@ public class CadAdvogadoController implements Initializable{
             }catch(SQLException e){
                 Utilidade.mensagemErro("ERRO DE INCLUSÃO DE LOGIN");
             }
+            advo = new Advogado();
+            advo.setOab(Integer.parseInt(CodOAB.getText()));
+            advo.setNome(nomeAdvogado.getText());
+            advodao = new AdvogadoDao();
+            try{
+                retorno = advodao.incluir(advo);
+                if(retorno)
+                    Utilidade.mensagemInformacao("INCLUSÃO DE ADVOGADO REALIZADA COM SUCESSO");
+                else
+                    Utilidade.mensagemErro("INCLUSÃO DE ADVOGADO NÃO REALIZADA");
+            }catch(SQLException e){
+                Utilidade.mensagemErro("ERRO DE INCLUSÃO DE ADVOGADO");
+            }
+            
             limpaDados();
         }
     }
