@@ -1,16 +1,17 @@
 .textfield {
     -fx-background-color: none;
-    -fx-border-color: white;
+    -fx-border-color: black;
    /* -fx-border-style: none none solid none;*/
     -fx-border-width : 0px 0px 1px 0px;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
+    -fx-prompt-text-fill: #383a3b;
 }
 .bgpane{
- -fx-background-color: linear-gradient(to right ,#1b263bff, #415a77ff, #778da9ff);
+ -fx-background-color: whitesmoke;
 
 }
 .Btn {
-    -fx-background-color: #e0e1dd;
+    -fx-background-color: #98daf0;
     -fx-font-family: 'Laksaman-bold';
     -fx-font-size: 18px;
     -fx-font-weight: bold;

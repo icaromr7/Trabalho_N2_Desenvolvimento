@@ -30,11 +30,11 @@
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
-                              <TextField fx:id="txtLogin" layoutX="439.0" layoutY="286.0" prefHeight="25.0" prefWidth="241.0" promptText="Login" styleClass="textfield" stylesheets="@CadAdvogado.css">
+                              <TextField fx:id="txtLogin" layoutX="439.0" layoutY="286.0" prefHeight="25.0" prefWidth="241.0" promptText="Login (Max: 12 dígitos)" styleClass="textfield" stylesheets="@CadAdvogado.css">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
-                              <TextField fx:id="txtSenha" layoutX="439.0" layoutY="343.0" prefHeight="25.0" prefWidth="241.0" promptText="Senha" styleClass="textfield" stylesheets="@CadAdvogado.css">
+                              <TextField fx:id="txtSenha" layoutX="439.0" layoutY="343.0" prefHeight="25.0" prefWidth="241.0" promptText="Senha (Max: 12 dígitos)" styleClass="textfield" stylesheets="@CadAdvogado.css">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>

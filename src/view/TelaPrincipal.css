@@ -1,14 +1,14 @@
 .bgpane{
  /*-fx-background-color: linear-gradient(to top right, #05f297  , hsba(265, 100%, 51%, 1) 90%);*/
 
- -fx-background-color: linear-gradient(to top right, #0d1b2aff, #1b263bff);
-    -fx-border-color: black;
+ -fx-background-color: #004d75;
+    -fx-border-color: none;
     -fx-border-width: 1.5px;
 
 }
 
 .sidepane{
-    -fx-background-color: linear-gradient(to right ,#1b263bff, #415a77ff, #778da9ff);
+    -fx-background-color: #00aefd;
     -fx-border-color: black;
     -fx-border-width: 1.5px;
 }

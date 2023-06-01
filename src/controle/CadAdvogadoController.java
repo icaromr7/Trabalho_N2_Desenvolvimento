@@ -355,7 +355,7 @@ public class CadAdvogadoController implements Initializable{
                 }
             }
         });
-        
+        //Limitar tamanho e só aceitar números no codOAB
         TextFormatter<String> textFormatter = new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
             if (newText.matches("\\d*") && newText.length() <= 6) {
@@ -364,8 +364,39 @@ public class CadAdvogadoController implements Initializable{
                 return null;
             }
         });
-        
+        //Limitar tamanho do login
         CodOAB.setTextFormatter(textFormatter);
+        TextFormatter<String> textFormatter2 = new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.length() <= 12) {
+                return change;
+            } else {
+                return null;
+            }
+        });
+        txtLogin.setTextFormatter(textFormatter2);
+        //Limitar tamanho da senha
+        CodOAB.setTextFormatter(textFormatter);
+        TextFormatter<String> textFormatter3 = new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.length() <= 12) {
+                return change;
+            } else {
+                return null;
+            }
+        });
+        txtSenha.setTextFormatter(textFormatter3);   
+        //Limitar tamanho do nome
+        CodOAB.setTextFormatter(textFormatter);
+        TextFormatter<String> textFormatter4 = new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.length() <= 40) {
+                return change;
+            } else {
+                return null;
+            }
+        });
+        nomeAdvogado.setTextFormatter(textFormatter4);
     }
     public void limpaDados(){
         this.txtID.setText("");
