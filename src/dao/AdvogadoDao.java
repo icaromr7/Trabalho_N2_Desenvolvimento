@@ -46,11 +46,10 @@ public class AdvogadoDao extends Connect{
         Connection con = null;
         try{
             con=this.getConnection();
-            PreparedStatement ps = con.prepareStatement("UPDATE advogado SET oab=?,nome=?,id_login=? WHERE id=?");
+            PreparedStatement ps = con.prepareStatement("UPDATE advogado SET oab=?,nome=? WHERE id=?");
             ps.setInt(1,a.getOab());
             ps.setString(2,a.getNome());
-            ps.setInt(3,a.getId_login());
-            ps.setInt(4, a.getId());
+            ps.setInt(3, a.getId());
             intRetorno=ps.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
@@ -67,8 +66,8 @@ public class AdvogadoDao extends Connect{
         Connection con = null;
         try{
             con=this.getConnection();
-            PreparedStatement ps = con.prepareStatement("DELETE FROM advogado WHERE oab=?");
-            ps.setInt(1,a.getOab());
+            PreparedStatement ps = con.prepareStatement("DELETE FROM advogado WHERE id=?");
+            ps.setInt(1,a.getId());
             intRetorno=ps.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
@@ -183,7 +182,7 @@ public class AdvogadoDao extends Connect{
         return ac;
     }
     //Consultar
-    public Advogado consultarID(int id_login) throws SQLException{
+    public Advogado consultarIDLogin(int id_login) throws SQLException{
         Connection con=null;
         Advogado aux = new Advogado();
         PreparedStatement ps= null;
@@ -192,6 +191,31 @@ public class AdvogadoDao extends Connect{
             con=this.getConnection();
             ps = con.prepareStatement("SELECT * FROM advogado WHERE id_login=?");
             ps.setInt(1, id_login);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                aux.setId(rs.getInt("id"));
+                aux.setOab(rs.getInt("oab"));
+                aux.setNome(rs.getString("nome"));
+                aux.setId_login(rs.getInt("id_login"));
+            }else{
+                aux=null;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            closeConnection(con, ps, rs);           
+        }
+        return aux;
+    }
+    public Advogado consultarID(int id) throws SQLException{
+        Connection con=null;
+        Advogado aux = new Advogado();
+        PreparedStatement ps= null;
+        ResultSet rs=null;
+        try{
+            con=this.getConnection();
+            ps = con.prepareStatement("SELECT * FROM advogado WHERE id=?");
+            ps.setInt(1, id);
             rs=ps.executeQuery();
             if(rs.next()){
                 aux.setId(rs.getInt("id"));

@@ -63,8 +63,8 @@ public class UsuarioDao extends Connect{
         Connection con = null;
         try{
             con=this.getConnection();
-            PreparedStatement ps = con.prepareStatement("DELETE FROM usuario WHERE login=?");
-            ps.setString(1,u.getLogin());
+            PreparedStatement ps = con.prepareStatement("DELETE FROM usuario WHERE id=?");
+            ps.setInt(1,u.getId());
             intRetorno=ps.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
@@ -82,8 +82,8 @@ public class UsuarioDao extends Connect{
         ResultSet rs=null;
         try{
             con=this.getConnection();
-            ps = con.prepareStatement("SELECT * FROM usuario WHERE login=?");
-            ps.setString(1, u.getLogin());
+            ps = con.prepareStatement("SELECT * FROM usuario WHERE id=?");
+            ps.setInt(1, u.getId());
             rs=ps.executeQuery();
             if(rs.next()){
                 aux.setId(rs.getInt("id"));
@@ -117,7 +117,10 @@ public class UsuarioDao extends Connect{
                 aux.setSenha(rs.getString("senha"));
                 aux.setCargo(rs.getString("cargo"));
             }else{
-                aux=null;
+                aux.setId(-1);
+                aux.setLogin(null);
+                aux.setSenha(null);
+                aux.setCargo(null);
             }
         }catch(SQLException e){
             e.printStackTrace();

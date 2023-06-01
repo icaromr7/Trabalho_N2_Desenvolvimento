@@ -23,6 +23,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import model.Advogado;
 import model.Usuario;
+import utilidade.Utilidade;
 
 public class TelaPrincipalController implements Initializable{
 
@@ -68,24 +69,40 @@ public class TelaPrincipalController implements Initializable{
     
     @FXML
     void btnCadAdvogadoOnAction(ActionEvent event) throws IOException {
-        AdvogadoSelecionado();
-        Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadAdvogado.fxml"),rbJanela);
-        paneExibir.getChildren().setAll(a);
+        if(usu.getCargo().equals("Administrador")){
+            AdvogadoSelecionado();
+            Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadAdvogado.fxml"),rbJanela);
+            paneExibir.getChildren().setAll(a);
+        }
+        else{
+            Utilidade.mensagemInformacao("Apenas o administrador tem acesso.");
+        }
     }
 
     @FXML
     void btnCadProcessoOnAction(ActionEvent event) throws IOException {
-        ProcessoSelecionado();
-        Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadProcesso.fxml"),rbJanela);
-        paneExibir.getChildren().setAll(a);
+        if(usu.getCargo().equals("Advogado")){
+            AdvogadoSelecionado();
+            Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadAdvogado.fxml"),rbJanela);
+            paneExibir.getChildren().setAll(a);
+        }
+        else{
+            Utilidade.mensagemInformacao("Apenas o advogado tem acesso.");
+        }
 
     }
 
     @FXML
     void btnCadTipoDeProcessoOnAction(ActionEvent event) throws IOException {
-        TpProcessoSelecionado();
-        Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadTipoDeProcesso.fxml"),rbJanela);
-        paneExibir.getChildren().setAll(a);
+        if(usu.getCargo().equals("Administrador")){
+            TpProcessoSelecionado();
+            Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadTipoDeProcesso.fxml"),rbJanela);
+            paneExibir.getChildren().setAll(a);
+        }
+        else{
+            Utilidade.mensagemInformacao("Apenas o administrador tem acesso.");
+        }
+        
     }
 
     @FXML
@@ -127,7 +144,7 @@ public class TelaPrincipalController implements Initializable{
         this.usu = (Usuario) rb.getObject("Usuario");
         advdao = new AdvogadoDao();
         try {
-            this.adv = advdao.consultarID(usu.getId());
+            this.adv = advdao.consultarIDLogin(usu.getId());
         } catch (SQLException ex) {
             Logger.getLogger(TelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -23,6 +23,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Advogado;
 import model.Usuario;
@@ -95,61 +96,122 @@ public class CadAdvogadoController implements Initializable{
     void btnAlterarOnAction(ActionEvent event) throws SQLException {
         int conta =0;
         String msg ="";
+        boolean retorno;
         if(txtID.getText().length()==0||txtID.getText().isEmpty()){
             msg+="Selecione um advogado na lista de pesquisa\n";
         }
-        if(verificaLogin(txtLogin.getText())==false){
-            msg+="Esse login já existe.\n";
+        if(CodOAB.getText().length()!=6||CodOAB.getText().isEmpty()){
+            msg+="Informe a OAB corretamente (6 números).\n";
+            conta++;
         }
-        if(verificaOAB(CodOAB.getText())==false){
+        if(nomeAdvogado.getText().length()==0||nomeAdvogado.getText().isEmpty()){
+            msg+="Informe o nome do Advogado.\n";
+            conta++;
+            
+        }
+        if(txtLogin.getText().length()==0||txtLogin.getText().isEmpty()){
+            msg+="Informe o login.\n";
+            conta++;          
+        }
+        if(txtSenha.getText().length()==0||txtSenha.getText().isEmpty()){
+            msg+="Informe a senha.\n";
+            conta++;
+            
+        }
+        if(verificaLogin(txtLogin.getText())!=false&&!usu.getLogin().equals(txtLogin.getText())){
+            msg+="Esse login já existe.\n";
+            conta++;          
+        }
+        if(verificaOAB(CodOAB.getText())!=false&&Integer.parseInt(CodOAB.getText())!=advo.getOab()){
             msg+="Essa OAB já foi cadastrada.\n";
+            conta++;        
         }
         if(conta>0){
             Utilidade.mensagemInformacao(msg);
         }
         else{
-            boolean retorno;
             advo = new Advogado();
-            advo.setId(Integer.parseInt(txtID.getText()));
-            advodao= new AdvogadoDao();
-            advo = advodao.consultar(advo);
-            advo.setOab(Integer.parseInt(CodOAB.getText()));
-            advo.setNome(nomeAdvogado.getText());
+            advodao = new AdvogadoDao();
+            advo = advodao.consultarID(Integer.parseInt(txtID.getText()));
+            int id_login = advo.getId_login();
+            int id_advo = advo.getId();
+            usu = new Usuario();
+            usu.setLogin(txtLogin.getText());
+            usu.setSenha(txtSenha.getText());
+            usu.setId(id_login);
+            usudao= new UsuarioDao();
             try{
-                retorno=advodao.alterar(advo);
-                if(retorno)
-                    Utilidade.mensagemInformacao("AlTERAÇÃO DE ADVOGADO REALIZADA COM SUCESSO");
+                retorno = usudao.alterar(usu);
+                if(retorno){
+                    advo = new Advogado();
+                    advo.setId(id_advo);
+                    advo.setOab(Integer.parseInt(CodOAB.getText()));
+                    advo.setNome(nomeAdvogado.getText());
+                    advodao = new AdvogadoDao();
+                    try{
+                    retorno = advodao.alterar(advo);
+                    if(retorno)
+                        Utilidade.mensagemInformacao("ALTERAÇÃO DE ADVOGADO E LOGIN REALIZADA COM SUCESSO");
+                    else
+                        Utilidade.mensagemErro("ALTERAÇÃO DE ADVOGADO E LOGIN NÃO REALIZADA");
+                    }catch(SQLException e){
+                        Utilidade.mensagemErro("ERRO DE ALTERAÇÃO DE ADVOGADO E LOGIN");
+                    }
+                    limpaDados();
+                }
                 else
-                    Utilidade.mensagemErro("AlTERAÇÃO DE ADVOGADO NÃO REALIZADA");
+                    Utilidade.mensagemErro("ALTERAÇÃO DE LOGIN NÃO REALIZADA");
             }catch(SQLException e){
-                Utilidade.mensagemErro("ERRO DE AlTERAÇÃO DE ADVOGADO");
+                Utilidade.mensagemErro("ERRO DE ALTERAÇÃO DE LOGIN");
             }
+            
         }
-        limpaDados();
 
     }
 
     @FXML
-    void btnExcluirOnAction(ActionEvent event) {
+    void btnExcluirOnAction(ActionEvent event) throws SQLException {
         Advogado adv = null;
         boolean retorno;
         if(CodOAB.getText().length()==0||CodOAB.getText().isEmpty()){
             Utilidade.mensagemErro("Informe a OAB");
             CodOAB.setFocusTraversable(true);
         }else{
-            adv = new Advogado();
-            adv.setOab(Integer.parseInt(CodOAB.getText()));
+            advo = new Advogado();
             advodao = new AdvogadoDao();
+            advo = advodao.consultarID(Integer.parseInt(txtID.getText()));
+            int id_login = advo.getId_login();
+            int id_advo = advo.getId();
+            advo = new Advogado();
+            advo.setId(id_advo);
+            advo.setOab(Integer.parseInt(CodOAB.getText()));
+            advo.setNome(nomeAdvogado.getText());
+            advodao = new AdvogadoDao();
+            
             try{
-                retorno=advodao.excluir(adv);
-                if(retorno)
-                    Utilidade.mensagemInformacao("EXCLUSÃO DE ADVOGADO REALIZADA COM SUCESSO");
+                retorno = advodao.excluir(advo);
+                if(retorno){
+                    usu = new Usuario();
+                    usu.setId(id_login);
+                    usu.setLogin(txtLogin.getText());
+                    usu.setSenha(txtSenha.getText());
+                    usudao= new UsuarioDao();
+                    try{
+                        retorno = usudao.excluir(usu);
+                    if(retorno)
+                        Utilidade.mensagemInformacao("EXCLUSÃO DE ADVOGADO E LOGIN REALIZADA COM SUCESSO");
+                    else
+                        Utilidade.mensagemErro("EXCLUSÃO DE ADVOGADO E LOGIN NÃO REALIZADA");
+                    }catch(SQLException e){
+                        Utilidade.mensagemErro("ERRO DE EXCLUSÃO DE ADVOGADO E LOGIN");
+                    }
+                    limpaDados();
+                }
                 else
-                    Utilidade.mensagemErro("EXCLUSÃO DE ADVOGADO NÃO REALIZADA");
+                    Utilidade.mensagemErro("INCLUSÃO DE LOGIN NÃO REALIZADA");
             }catch(SQLException e){
-                Utilidade.mensagemErro("ERRO DE EXCLUSÃO DE ADVOGADO");
+                Utilidade.mensagemErro("ERRO DE INCLUSÃO DE LOGIN");
             }
-            limpaDados();
         }
 
     }
@@ -160,31 +222,31 @@ public class CadAdvogadoController implements Initializable{
         boolean retorno;
         int conta =0;
         String msg="";
-        if(CodOAB.getText().length()==0||CodOAB.getText().isEmpty()){
-            msg+="Informe a OAB.\n";
+        if(CodOAB.getText().length()!=6||CodOAB.getText().isEmpty()){
+            msg+="Informe a OAB corretamente (6 números).\n";
             conta++;
-            CodOAB.setFocusTraversable(true);
+            
         }
         if(nomeAdvogado.getText().length()==0||nomeAdvogado.getText().isEmpty()){
             msg+="Informe o nome do Advogado.\n";
             conta++;
-            nomeAdvogado.setFocusTraversable(true);
+            
         }
         if(txtLogin.getText().length()==0||txtLogin.getText().isEmpty()){
             msg+="Informe o login.\n";
             conta++;
-            txtLogin.setFocusTraversable(true);
+           
         }
         if(txtSenha.getText().length()==0||txtSenha.getText().isEmpty()){
             msg+="Informe a senha.\n";
             conta++;
-            txtSenha.setFocusTraversable(true);
+            
         }
-        if(verificaLogin(txtLogin.getText())==false){
+        if(verificaLogin(txtLogin.getText())==true){
             msg+="Esse login já existe.\n";
             conta++;
         }
-        if(verificaOAB(CodOAB.getText())==false){
+        if(verificaOAB(CodOAB.getText())==true){
             msg+="Essa OAB já foi cadastrada.\n";
             conta++;
         }
@@ -198,28 +260,32 @@ public class CadAdvogadoController implements Initializable{
             usudao= new UsuarioDao();
             try{
                 retorno = usudao.incluir(usu);
-                if(retorno)
-                    Utilidade.mensagemInformacao("INCLUSÃO DE LOGIN REALIZADA COM SUCESSO");
+                if(retorno){
+                    advo = new Advogado();
+                    advo.setOab(Integer.parseInt(CodOAB.getText()));
+                    advo.setNome(nomeAdvogado.getText());
+                    usu= usudao.consultar(usu);
+                    advo.setId_login(usu.getId());
+                    advodao = new AdvogadoDao();
+                    try{
+                    retorno = advodao.incluir(advo);
+                    if(retorno)
+                        Utilidade.mensagemInformacao("INCLUSÃO DE ADVOGADO E LOGIN REALIZADA COM SUCESSO");
+                    else
+                        Utilidade.mensagemErro("INCLUSÃO DE ADVOGADO E LOGIN NÃO REALIZADA");
+                        usudao.excluir(usu);
+                    }catch(SQLException e){
+                        Utilidade.mensagemErro("ERRO DE INCLUSÃO DE ADVOGADO E LOGIN");
+                        usudao.excluir(usu);
+                    }
+                    limpaDados();
+                }
                 else
                     Utilidade.mensagemErro("INCLUSÃO DE LOGIN NÃO REALIZADA");
             }catch(SQLException e){
                 Utilidade.mensagemErro("ERRO DE INCLUSÃO DE LOGIN");
             }
-            advo = new Advogado();
-            advo.setOab(Integer.parseInt(CodOAB.getText()));
-            advo.setNome(nomeAdvogado.getText());
-            advodao = new AdvogadoDao();
-            try{
-                retorno = advodao.incluir(advo);
-                if(retorno)
-                    Utilidade.mensagemInformacao("INCLUSÃO DE ADVOGADO REALIZADA COM SUCESSO");
-                else
-                    Utilidade.mensagemErro("INCLUSÃO DE ADVOGADO NÃO REALIZADA");
-            }catch(SQLException e){
-                Utilidade.mensagemErro("ERRO DE INCLUSÃO DE ADVOGADO");
-            }
             
-            limpaDados();
         }
     }
 
@@ -229,7 +295,7 @@ public class CadAdvogadoController implements Initializable{
         aux=txtFieldPesquisa.getText();
         advodao= new AdvogadoDao();
         advo = new Advogado();
-        if(!comboBoxPesquisa.getValue().equals("Por código")){
+        if(!comboBoxPesquisa.getValue().equals("Por OAB")){
             try{
                 advogados = advodao.consultar(aux);
             }catch(SQLException e){
@@ -245,18 +311,23 @@ public class CadAdvogadoController implements Initializable{
             if(Utilidade.validaConteudoInteiro(aux)==true){
                 try{
                     int cod= Integer.parseInt(aux);
+                    advo = new Advogado();
+                    advodao = new AdvogadoDao();
                     advo = advodao.consultar(cod);
                     advogados = new ArrayList<>();
                     advogados.add(advo);
-                }catch(SQLException e){
-                    Utilidade.mensagemErro("Erro na consulta");
-                }
-            }
-            try{
+                    try{
                 carregarTableViewAdvogadosComColecao(advogados);
             }catch(SQLException e){
                 Utilidade.mensagemErro("Erro ao alimentar a tabela com dados");
             }
+                }catch(SQLException e){
+                    Utilidade.mensagemErro("Erro na consulta");
+                }
+            }else{
+                Utilidade.mensagemErro("Insira apenas números!");
+            }
+            
         }
     }
     
@@ -284,6 +355,17 @@ public class CadAdvogadoController implements Initializable{
                 }
             }
         });
+        
+        TextFormatter<String> textFormatter = new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d*") && newText.length() <= 6) {
+                return change;
+            } else {
+                return null;
+            }
+        });
+        
+        CodOAB.setTextFormatter(textFormatter);
     }
     public void limpaDados(){
         this.txtID.setText("");
@@ -292,12 +374,30 @@ public class CadAdvogadoController implements Initializable{
         this.txtLogin.setText("");
         this.txtSenha.setText("");
     }
+    //Verificador da oab
     public boolean verificaOAB(String oab) throws SQLException{
-        int aux = Integer.parseInt(oab);
-        return advodao.consultar(aux)==null;
+        if (oab.isEmpty()) {
+        return false; // Retorna false se o campo estiver vazio
+        }
+
+        try {
+            int aux = Integer.parseInt(oab);
+            advodao = new AdvogadoDao();
+            Advogado adv = new Advogado();
+            adv = advodao.consultar(aux);
+            return adv != null;
+        } catch (NumberFormatException e) {
+            return false; // Retorna false se o valor não puder ser convertido para um número inteiro
+        }
     }
+    // Verificador do login
     public boolean verificaLogin(String login) throws SQLException{
-        return usudao.consultar(login)==null;
+        Usuario usuario = new Usuario();
+        usudao = new UsuarioDao();
+        usuario.setLogin(login);
+        Usuario resultado = usudao.consultar(login);
+
+        return resultado != null;
     }
     //Carregar a Tabela com o nome dos advogados
     public void carregarTableViewAdvogados() throws SQLException{
@@ -309,14 +409,17 @@ public class CadAdvogadoController implements Initializable{
     }
     //Selecionar advogado
     public void selecionarItemTableViewAdvogado(Advogado a)throws SQLException{
+        advo = new Advogado();
+        advo=a;
         this.txtID.setText(Integer.toString(a.getId()));
         this.CodOAB.setText(Integer.toString(a.getOab()));
         this.nomeAdvogado.setText(a.getNome());
         usu = new Usuario();
         usudao= new UsuarioDao();
-        usu.setId(advo.getId_login());
+        usu.setId(a.getId_login());
         usu = usudao.consultar(usu);
         this.txtLogin.setText(usu.getLogin());
+        this.txtSenha.setText(usu.getSenha());
         tabPane.getSelectionModel().select(abaCadastro);
     }
     //Atualização de table por pesquisa

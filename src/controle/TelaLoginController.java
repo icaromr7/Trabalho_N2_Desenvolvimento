@@ -129,7 +129,8 @@ public class TelaLoginController implements Initializable{
     }
     public boolean verificaUsuario(Usuario u) throws SQLException{
         boolean aux;
-        Usuario usu2= usudao.consultar(u);
+        usudao = new UsuarioDao();
+        Usuario usu2= usudao.consultar(u.getLogin());
         if(usu2==null){
             return false;
         }

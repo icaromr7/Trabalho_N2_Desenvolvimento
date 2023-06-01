@@ -16,25 +16,25 @@
    <children>
       <Pane prefHeight="755.0" prefWidth="1604.0" styleClass="bgpane" stylesheets="@CadAdvogado.css">
          <children>
-            <TabPane fx:id="tabPane" prefHeight="755.0" prefWidth="1604.0" tabClosingPolicy="UNAVAILABLE" styleClass="tabpane" stylesheets="@CadAdvogado.css">
+            <TabPane fx:id="tabPane" prefHeight="755.0" prefWidth="1604.0" styleClass="tabpane" stylesheets="@CadAdvogado.css" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab fx:id="abaCadastro" text="Cadastro">
                      <content>
                         <Pane prefHeight="726.0" prefWidth="1397.0">
                            <children>
-                              <TextField fx:id="CodOAB" layoutX="439.0" layoutY="168.0" prefHeight="25.0" prefWidth="187.0" promptText="Inscrição OAB" styleClass="textfield" stylesheets="@CadADvogado.css">
+                              <TextField fx:id="CodOAB" layoutX="439.0" layoutY="168.0" prefHeight="40.0" prefWidth="240.0" promptText="Inscrição OAB (Ex: 123456)" styleClass="textfield" stylesheets="@CadAdvogado.css">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
-                              <TextField fx:id="nomeAdvogado" layoutX="439.0" layoutY="227.0" prefHeight="25.0" prefWidth="533.0" promptText="Nome do advogado" styleClass="textfield" stylesheets="@CadADvogado.css">
+                              <TextField fx:id="nomeAdvogado" layoutX="439.0" layoutY="227.0" prefHeight="25.0" prefWidth="533.0" promptText="Nome do advogado" styleClass="textfield" stylesheets="@CadAdvogado.css">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
-                              <TextField fx:id="txtLogin" layoutX="439.0" layoutY="286.0" prefHeight="25.0" prefWidth="241.0" promptText="Login" styleClass="textfield" stylesheets="@CadADvogado.css">
+                              <TextField fx:id="txtLogin" layoutX="439.0" layoutY="286.0" prefHeight="25.0" prefWidth="241.0" promptText="Login" styleClass="textfield" stylesheets="@CadAdvogado.css">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
-                              <TextField fx:id="txtSenha" layoutX="439.0" layoutY="343.0" prefHeight="25.0" prefWidth="241.0" promptText="Senha" styleClass="textfield" stylesheets="@CadADvogado.css">
+                              <TextField fx:id="txtSenha" layoutX="439.0" layoutY="343.0" prefHeight="25.0" prefWidth="241.0" promptText="Senha" styleClass="textfield" stylesheets="@CadAdvogado.css">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
@@ -50,7 +50,7 @@
                                  <font>
                                     <Font size="18.0" />
                                  </font></Button>
-                              <TextField fx:id="txtID" editable="false" layoutX="439.0" layoutY="113.0" prefHeight="25.0" prefWidth="125.0" promptText="ID" styleClass="textfield" stylesheets="@CadADvogado.css">
+                              <TextField fx:id="txtID" editable="false" layoutX="439.0" layoutY="113.0" prefHeight="25.0" prefWidth="125.0" promptText="ID" styleClass="textfield" stylesheets="@CadAdvogado.css">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
@@ -68,7 +68,7 @@
                                  </font>
                               </Label>
                               <ComboBox fx:id="comboBoxPesquisa" layoutX="953.0" layoutY="126.0" prefHeight="39.0" prefWidth="225.0" promptText="Escolha:" />
-                              <TextField fx:id="txtFieldPesquisa" layoutX="411.0" layoutY="126.0" prefHeight="25.0" prefWidth="502.0" promptText="Busca" styleClass="textfield" stylesheets="@CadADvogado.css">
+                              <TextField fx:id="txtFieldPesquisa" layoutX="411.0" layoutY="126.0" prefHeight="25.0" prefWidth="502.0" promptText="Busca" styleClass="textfield" stylesheets="@CadAdvogado.css">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
