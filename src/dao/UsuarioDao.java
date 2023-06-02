@@ -117,10 +117,7 @@ public class UsuarioDao extends Connect{
                 aux.setSenha(rs.getString("senha"));
                 aux.setCargo(rs.getString("cargo"));
             }else{
-                aux.setId(-1);
-                aux.setLogin(null);
-                aux.setSenha(null);
-                aux.setCargo(null);
+                aux=null;
             }
         }catch(SQLException e){
             e.printStackTrace();

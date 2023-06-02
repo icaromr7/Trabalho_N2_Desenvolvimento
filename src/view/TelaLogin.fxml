@@ -13,7 +13,7 @@
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <Label alignment="TOP_CENTER" layoutX="212.0" layoutY="50.0" prefHeight="55.0" prefWidth="176.0" styleClass="loginlabel" stylesheets="@TelaLogin.css" text="Login" textFill="WHITE">
+      <Label alignment="TOP_CENTER" layoutX="212.0" layoutY="50.0" prefHeight="55.0" prefWidth="176.0" styleClass="loginlabel" stylesheets="@TelaLogin.css" text="Login" textFill="BLACK">
          <font>
             <Font size="36.0" />
          </font>
@@ -22,6 +22,6 @@
          <font>
             <Font size="18.0" />
          </font></PasswordField>
-      <Button fx:id="btnEntrar" layoutX="181.0" layoutY="255.0" mnemonicParsing="false" onAction="#btnEntrarOnAction" prefHeight="36.0" prefWidth="239.0" styleClass="buttons" stylesheets="@TelaLogin.css" text="Entrar" textFill="WHITE" />
+      <Button fx:id="btnEntrar" layoutX="181.0" layoutY="255.0" mnemonicParsing="false" onAction="#btnEntrarOnAction" prefHeight="36.0" prefWidth="239.0" styleClass="buttons" stylesheets="@TelaLogin.css" text="Entrar" textFill="BLACK" />
    </children>
 </AnchorPane>

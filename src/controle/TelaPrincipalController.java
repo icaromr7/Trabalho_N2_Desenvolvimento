@@ -83,7 +83,7 @@ public class TelaPrincipalController implements Initializable{
     void btnCadProcessoOnAction(ActionEvent event) throws IOException {
         if(usu.getCargo().equals("Advogado")){
             btnSelecionado(btnCadProcesso, btnCadAdvogado, btnCadTipoDeProcesso, btnPsqProcesso);
-            Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadAdvogado.fxml"),rbJanela);
+            Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadProcesso.fxml"),rbJanela);
             paneExibir.getChildren().setAll(a);
         }
         else{

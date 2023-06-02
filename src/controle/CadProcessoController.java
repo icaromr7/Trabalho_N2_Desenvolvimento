@@ -8,6 +8,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,6 +32,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Advogado;
 import model.Usuario;
@@ -82,6 +84,9 @@ public class CadProcessoController implements Initializable{
 
     @FXML
     private TableColumn<Processo, Integer> tableColumnId;
+    
+    @FXML
+    private TableColumn<Processo, Date> tableColumnData;
 
     @FXML
     private TableView<Processo> tableView;
@@ -111,6 +116,42 @@ public class CadProcessoController implements Initializable{
         if(codProcesso.getText().length()==0||codProcesso.getText().isEmpty()){
             msg+="Selecione um advogado na lista de pesquisa\n";
         }
+        if(txtNomeCliente.getText().length()==0||txtNomeCliente.getText().isEmpty()){
+            msg+="Informe o nome do Advogado.\n";
+            conta++;
+            txtNomeCliente.setFocusTraversable(true);
+        }
+        if(txtCpfCliente.getText().length()==0||txtCpfCliente.getText().isEmpty()){
+            msg+="Informe o login.\n";
+            conta++;
+            txtCpfCliente.setFocusTraversable(true);
+        }
+        if(txtValorProcesso.getText().length()==0||txtValorProcesso.getText().isEmpty()){
+            msg+="Informe a senha.\n";
+            conta++;
+            txtValorProcesso.setFocusTraversable(true);
+        }
+        if(cbTpProcesso.getValue()==null){
+            msg+="Escolha o tipo de processo.\n";
+            conta++;
+        }
+        if(dtDataProcesso.getValue()==null){
+            msg+="Informe uma data para o processo\n";
+            conta++;
+        }
+        if(cbSituacao.getValue()==null){
+            msg+="Escolha a situação.\n";
+            conta++;
+        }
+        if(cbClassificacao.getValue()==null){
+            msg+="Escolha a classificação.\n";
+            conta++;
+        }
+        if(txtDescricao.getText().length()==0||txtDescricao.getText().isEmpty()){
+            msg+="Informe a descrição.\n";
+            conta++;
+            txtDescricao.setFocusTraversable(true);
+        }
         if(conta>0){
             Utilidade.mensagemInformacao(msg);
         }
@@ -118,15 +159,13 @@ public class CadProcessoController implements Initializable{
             boolean retorno;
             p = new Processo();
             pdao = new ProcessoDao();
-            p = pdao.pesquisarPorId(Integer.parseInt(codProcesso.getText()));
+            p = pdao.pesquisarPorId(Integer.parseInt(codProcesso.getText()),adv.getId());
             p.setNome_cliente(txtNomeCliente.getText());
             p.setCpf_cliente(txtCpfCliente.getText());
             p.setId_adv(adv.getId());
             p.setValor(Double.valueOf(txtValorProcesso.getText()));
             p.setId_tipo(cbTpProcesso.getValue().getId());
-            LocalDate localDate = dtDataProcesso.getValue();
-            Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            p.setData(date);
+            p.setData(java.sql.Date.valueOf(dtDataProcesso.getValue()));
             p.setSituacao(cbSituacao.getValue());
             p.setClassificacao(cbClassificacao.getValue());
             p.setDescricao(txtDescricao.getText());
@@ -184,11 +223,6 @@ public class CadProcessoController implements Initializable{
         boolean retorno;
         int conta =0;
         String msg="";
-        if(codProcesso.getText().length()==0||codProcesso.getText().isEmpty()){
-            msg+="Informe a OAB.\n";
-            conta++;
-            codProcesso.setFocusTraversable(true);
-        }
         if(txtNomeCliente.getText().length()==0||txtNomeCliente.getText().isEmpty()){
             msg+="Informe o nome do Advogado.\n";
             conta++;
@@ -264,7 +298,7 @@ public class CadProcessoController implements Initializable{
         p = new Processo();
         if(!comboBoxTipo.getValue().equals("Por código")){
             try{
-                processos = pdao.pesquisarPorCpfCliente(aux);
+                processos = pdao.pesquisarPorCpfCliente(aux,adv.getId());
             }catch(SQLException e){
                 Utilidade.mensagemErro("Erro na consulta");
             }
@@ -278,7 +312,7 @@ public class CadProcessoController implements Initializable{
             if(Utilidade.validaConteudoInteiro(aux)==true){
                 try{
                     int cod= Integer.parseInt(aux);
-                    p = pdao.pesquisarPorId(cod);
+                    p = pdao.pesquisarPorId(cod,adv.getId());
                     processos = new ArrayList<>();
                     processos.add(p);
                 }catch(SQLException e){
@@ -297,6 +331,20 @@ public class CadProcessoController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle rb) {
         this.adv = (Advogado) rb.getObject("Advogado");
+        this.txtOabAdvogado.setText(Integer.toString(adv.getOab()));
+        ObservableList<String> oblsituacao = FXCollections.observableArrayList("Em andamento","Finalizado");
+        cbSituacao.setItems(oblsituacao);
+        ObservableList<String> oblclassificacao = FXCollections.observableArrayList("Público","Sigiloso");
+        cbClassificacao.setItems(oblclassificacao);
+        ArrayList <TipoDeProcesso> tdp = new ArrayList();
+        tpdao = new TipoDeProcessoDao();
+        try {
+            tdp = tpdao.consultar();
+        } catch (SQLException ex) {
+            Logger.getLogger(CadProcessoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ObservableList<TipoDeProcesso> obltdp = FXCollections.observableArrayList(tdp);
+        cbTpProcesso.setItems(obltdp);
         //foco tab
         tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>(){
             public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue){
@@ -309,6 +357,56 @@ public class CadProcessoController implements Initializable{
                 }
             }
         });
+        //Seleção na tabela
+        tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
+            public void changed(ObservableValue arg0, Object arg1, Object arg2){
+                try {
+                    selecionarItemTableViewProcesso((Processo)arg2);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CadAdvogadoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        //Limitar quantidade de caractesres do nome cliente
+        TextFormatter<String> textFormatter = new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.length() <= 40) {
+                return change;
+            } else {
+                return null;
+            }
+        });
+        txtNomeCliente.setTextFormatter(textFormatter);
+        //Limitar quantidade de caractesres do cpf_cliente e só aceitar números
+        TextFormatter<String> textFormatter2 = new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d*") && newText.length() <= 11) {
+                return change;
+            } else {
+                return null;
+            }
+        });
+        txtCpfCliente.setTextFormatter(textFormatter2);
+        //Limitar quantidade de caracteres do valor e formatação pra double
+        TextFormatter<String> textFormatter3 = new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("-?\\d*(\\.\\d*)?") && newText.length() <= 10) {
+                return change;
+            } else {
+                return null;
+            }
+        });
+        txtValorProcesso.setTextFormatter(textFormatter3);
+        //Limitar quantidade de caractesres da descrição do projeto
+        TextFormatter<String> textFormatter4 = new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.length() <= 1000) {
+                return change;
+            } else {
+                return null;
+            }
+        });
+        txtDescricao.setTextFormatter(textFormatter4);
     }
     
     public void limpaDados(){
@@ -323,6 +421,7 @@ public class CadProcessoController implements Initializable{
     public void carregarTableViewProcessos() throws SQLException{
         tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tableColumnCpf_Cliente.setCellValueFactory(new PropertyValueFactory<>("cpf_cliente"));
+        tableColumnData.setCellValueFactory(new PropertyValueFactory<>("data"));
         pdao = new ProcessoDao();
         processos= pdao.pesquisarPorIdAdvogado(adv.getId());
         oblProcessos = FXCollections.observableArrayList(processos);
@@ -337,13 +436,17 @@ public class CadProcessoController implements Initializable{
         advdao = new AdvogadoDao();
         adv= advdao.consultar(adv);
         this.txtOabAdvogado.setText(Integer.toString(adv.getOab()));
-        this.txtValorProcesso.setText(String.valueOf(p.getValor()));
+        this.txtValorProcesso.setText(String.valueOf(p.getValor())+"0");
         this.cbSituacao.setValue(p.getSituacao());
         this.cbClassificacao.setValue(p.getClassificacao());
         tpdao = new TipoDeProcessoDao();
         tp = tpdao.consultar(p.getId_tipo());
         this.cbTpProcesso.setValue(tp);
-        this.dtDataProcesso.setValue(p.getData().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        String data = p.getData().toString();
+        data=data.substring(8,10)+"/"+data.substring(5,7)+"/"+data.substring(0,4);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate ld = LocalDate.parse(data, formatter);
+        this.dtDataProcesso.setValue(ld);
         this.txtDescricao.setText(p.getDescricao()); 
         tabPane.getSelectionModel().select(abaCadastro);
     }
@@ -352,6 +455,7 @@ public class CadProcessoController implements Initializable{
         oblProcessos = FXCollections.observableArrayList(processos);
         tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tableColumnCpf_Cliente.setCellValueFactory(new PropertyValueFactory<>("cpf_cliente"));
+        tableColumnData.setCellValueFactory(new PropertyValueFactory<>("data"));
         this.tableView.setItems(oblProcessos);
     }
 

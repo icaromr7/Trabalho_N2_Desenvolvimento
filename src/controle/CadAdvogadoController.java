@@ -264,7 +264,7 @@ public class CadAdvogadoController implements Initializable{
                     advo = new Advogado();
                     advo.setOab(Integer.parseInt(CodOAB.getText()));
                     advo.setNome(nomeAdvogado.getText());
-                    usu= usudao.consultar(usu);
+                    usu= usudao.consultar(usu.getLogin());
                     advo.setId_login(usu.getId());
                     advodao = new AdvogadoDao();
                     try{
@@ -364,8 +364,8 @@ public class CadAdvogadoController implements Initializable{
                 return null;
             }
         });
-        //Limitar tamanho do login
         CodOAB.setTextFormatter(textFormatter);
+        //Limitar tamanho do login
         TextFormatter<String> textFormatter2 = new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
             if (newText.length() <= 12) {
@@ -376,7 +376,7 @@ public class CadAdvogadoController implements Initializable{
         });
         txtLogin.setTextFormatter(textFormatter2);
         //Limitar tamanho da senha
-        CodOAB.setTextFormatter(textFormatter);
+ 
         TextFormatter<String> textFormatter3 = new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
             if (newText.length() <= 12) {
@@ -387,7 +387,6 @@ public class CadAdvogadoController implements Initializable{
         });
         txtSenha.setTextFormatter(textFormatter3);   
         //Limitar tamanho do nome
-        CodOAB.setTextFormatter(textFormatter);
         TextFormatter<String> textFormatter4 = new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
             if (newText.length() <= 40) {
@@ -398,6 +397,7 @@ public class CadAdvogadoController implements Initializable{
         });
         nomeAdvogado.setTextFormatter(textFormatter4);
     }
+    //Limpar dados da tela
     public void limpaDados(){
         this.txtID.setText("");
         this.CodOAB.setText("");
