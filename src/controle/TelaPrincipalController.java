@@ -70,7 +70,7 @@ public class TelaPrincipalController implements Initializable{
     @FXML
     void btnCadAdvogadoOnAction(ActionEvent event) throws IOException {
         if(usu.getCargo().equals("Administrador")){
-            AdvogadoSelecionado();
+            btnSelecionado(btnCadAdvogado, btnCadProcesso, btnCadTipoDeProcesso, btnPsqProcesso);
             Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadAdvogado.fxml"),rbJanela);
             paneExibir.getChildren().setAll(a);
         }
@@ -82,7 +82,7 @@ public class TelaPrincipalController implements Initializable{
     @FXML
     void btnCadProcessoOnAction(ActionEvent event) throws IOException {
         if(usu.getCargo().equals("Advogado")){
-            AdvogadoSelecionado();
+            btnSelecionado(btnCadProcesso, btnCadAdvogado, btnCadTipoDeProcesso, btnPsqProcesso);
             Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadAdvogado.fxml"),rbJanela);
             paneExibir.getChildren().setAll(a);
         }
@@ -95,7 +95,7 @@ public class TelaPrincipalController implements Initializable{
     @FXML
     void btnCadTipoDeProcessoOnAction(ActionEvent event) throws IOException {
         if(usu.getCargo().equals("Administrador")){
-            TpProcessoSelecionado();
+            btnSelecionado(btnCadTipoDeProcesso, btnCadAdvogado, btnCadProcesso, btnPsqProcesso);
             Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadTipoDeProcesso.fxml"),rbJanela);
             paneExibir.getChildren().setAll(a);
         }
@@ -133,7 +133,7 @@ public class TelaPrincipalController implements Initializable{
 
     @FXML
     void btnPsqProcessoOnACtion(ActionEvent event) throws IOException {
-        PsqProcessoSelecionado();
+        btnSelecionado(btnPsqProcesso, btnCadAdvogado, btnCadProcesso, btnCadTipoDeProcesso);
         Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/PesquisaProcesso.fxml"),rbJanela);
         paneExibir.getChildren().setAll(a);
     }
@@ -181,54 +181,16 @@ public class TelaPrincipalController implements Initializable{
             };
         
     }
-    //Alterar cor do button após opção selecionada
-    //Advogado
-    public void AdvogadoSelecionado(){
-        btnCadAdvogado.setStyle("-fx-background-color:#e0e1dd;" +
-     "-fx-border-color: none;" +
-     "-fx-border-width: 0px;" +
-     "-fx-background-radius: 50px; -fx-text-fill: black;" +
-     "-fx-border-radius: 50px;" +
-     "-fx-border-style: solid;");
-        btnCadProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
-        btnCadTipoDeProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
-        btnPsqProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
-    }
-    //Tipo de processo
-    public void TpProcessoSelecionado(){
-        btnCadTipoDeProcesso.setStyle("-fx-background-color:#e0e1dd;" +
-     "-fx-border-color: none;" +
-     "-fx-border-width: 0px;" +
-     "-fx-background-radius: 50px; -fx-text-fill: black;" +
-     "-fx-border-radius: 50px;" +
-     "-fx-border-style: solid;");
-        btnCadProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
-        btnCadAdvogado.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
-        btnPsqProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
-    }
-    //Processo
-    public void ProcessoSelecionado(){
-        btnCadProcesso.setStyle("-fx-background-color:#e0e1dd;" +
-     "-fx-border-color: none;" +
-     "-fx-border-width: 0px;" +
-     "-fx-background-radius: 50px; -fx-text-fill: black;" +
-     "-fx-border-radius: 50px;" +
-     "-fx-border-style: solid;");
-        btnCadTipoDeProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
-        btnCadAdvogado.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
-        btnPsqProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
-    }
-    //Pesquisa Processo
-    public void PsqProcessoSelecionado(){
-        btnPsqProcesso.setStyle("-fx-background-color:#e0e1dd;" +
-     "-fx-border-color: none;" +
-     "-fx-border-width: 0px;" +
-     "-fx-background-radius: 50px; -fx-text-fill: black;" +
-     "-fx-border-radius: 50px;" +
-     "-fx-border-style: solid;");
-        btnCadTipoDeProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
-        btnCadAdvogado.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
-        btnCadProcesso.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
-    }
     
+    public void btnSelecionado(Button b1,Button b2,Button b3,Button b4){
+        b1.setStyle("-fx-background-color:#e0e1dd;" +
+     "-fx-border-color: none;" +
+     "-fx-border-width: 0px;" +
+     "-fx-background-radius: 50px; -fx-text-fill: black;" +
+     "-fx-border-radius: 50px;" +
+     "-fx-border-style: solid;");
+        b2.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+        b3.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+        b4.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+    }
 }

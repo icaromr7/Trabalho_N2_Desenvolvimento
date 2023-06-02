@@ -20,7 +20,7 @@ public class TipoDeProcessoDao extends Connect{
         Connection con = null;
         try{
             con=this.getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO tipo_de_processo (tipo) VALUES ?");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO tipo_de_processo (tipo) VALUES (?)");
             ps.setString(1, tp.getTipoDoProcesso());
             intRetorno=ps.executeUpdate();
         }catch(SQLException e){

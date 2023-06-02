@@ -132,13 +132,15 @@ public class CadTipoDeProcessoController implements Initializable{
     }
 
     @FXML
-    void btnIncluirOnAction(ActionEvent event) {
-        tp=null;
+    void btnIncluirOnAction(ActionEvent event) throws SQLException {
         boolean retorno;
+        String msg = "";
+        int conta=0;
         if(nomeTipoProcesso.getText().length()==0||nomeTipoProcesso.getText().isEmpty()){
-            Utilidade.mensagemErro("Informe um nome válido para o tipo de processo");
-            nomeTipoProcesso.setFocusTraversable(true);
+            Utilidade.mensagemErro("Informe um nome válido para o tipo de processo\n");
+            conta++;
         }
+        
         else{
             tp= new TipoDeProcesso();
             tp.setTipoDoProcesso(nomeTipoProcesso.getText());
@@ -171,7 +173,7 @@ public class CadTipoDeProcessoController implements Initializable{
                 Utilidade.mensagemErro("Erro na consulta");
             }
             try{
-                carregarTableViewAtoresComColecao(tipos);
+                carregarTableViewProcessoComColecao(tipos);
             }catch(SQLException e){
                 Utilidade.mensagemErro("Erro ao alimentar a tabela com dados");
             }
@@ -188,7 +190,7 @@ public class CadTipoDeProcessoController implements Initializable{
                 }
             }
             try{
-                carregarTableViewAtoresComColecao(tipos);
+                carregarTableViewProcessoComColecao(tipos);
             }catch(SQLException e){
                 Utilidade.mensagemErro("Erro ao alimentar a tabela com dados");
             }
@@ -218,7 +220,7 @@ public class CadTipoDeProcessoController implements Initializable{
         tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>(){
             public void changed(ObservableValue<? extends Tab> observable, Tab oldValue, Tab newValue){
                 if(observable.getValue().getText().equals("Pesquisa"))try {
-                    carregarTableViewAtores();
+                    carregarTableViewTpProcesso();
                     ObservableList<String> tipo = FXCollections.observableArrayList("Por código","Por nome");
                     comboBoxTipo.setItems(tipo);
                 } catch (SQLException ex) {
@@ -230,7 +232,7 @@ public class CadTipoDeProcessoController implements Initializable{
         tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
             public void changed(ObservableValue arg0, Object arg1, Object arg2){
                 try {
-                    selecionarItemTableViewAtor((TipoDeProcesso)arg2);
+                    selecionarItemTableViewTpProcesso((TipoDeProcesso)arg2);
                 } catch (SQLException ex) {
                     Logger.getLogger(CadTipoDeProcessoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -243,24 +245,25 @@ public class CadTipoDeProcessoController implements Initializable{
         this.nomeTipoProcesso.setText("");
     }
     //Carregar a Tabela com o nome dos atores
-    public void carregarTableViewAtores() throws SQLException{
-        tableColumnNomeCat.setCellValueFactory(new PropertyValueFactory<>("nomeAtor"));
+    public void carregarTableViewTpProcesso() throws SQLException{
+        tableColumnNomeCat.setCellValueFactory(new PropertyValueFactory<>("tipoDoProcesso"));
         tpdao= new TipoDeProcessoDao();
         tipos= tpdao.consultar();
         oblTipos = FXCollections.observableArrayList(tipos);
         this.tableView.setItems(oblTipos);
     }
     //Selecionar ator
-    public void selecionarItemTableViewAtor(TipoDeProcesso tp)throws SQLException{
+    public void selecionarItemTableViewTpProcesso(TipoDeProcesso tp)throws SQLException{
         this.codCat.setText(Integer.toString(tp.getId()));
         this.nomeTipoProcesso.setText(tp.getTipoDoProcesso());
         tabPane.getSelectionModel().select(abaCadastro);
     }
     //Atualização de table por pesquisa
-    public void carregarTableViewAtoresComColecao(ArrayList<TipoDeProcesso> atores) throws SQLException{
+    public void carregarTableViewProcessoComColecao(ArrayList<TipoDeProcesso> atores) throws SQLException{
         oblTipos = FXCollections.observableArrayList(atores);
-        tableColumnNomeCat.setCellValueFactory(new PropertyValueFactory<>("nomeAtor"));
+        tableColumnNomeCat.setCellValueFactory(new PropertyValueFactory<>("tipoDoProcesso"));
         this.tableView.setItems(oblTipos);
     }
+    
 
 }
