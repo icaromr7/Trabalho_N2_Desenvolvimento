@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="913.0" prefWidth="900.0" styleClass="bgpane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.DetalhesController">
+    <stylesheets>
+        <URL value="@Detalhes.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutY="-1.0" prefHeight="913.0" prefWidth="900.0">
+         <children>
+            <Label layoutX="54.0" layoutY="61.0" text="Código:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="95.0" text="Nome do Cliente:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="129.0" text="CPF do Cliente:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="163.0" text="Nome do Advogado:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="197.0" text="Inscrição OAB:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="231.0" text="Valor do processo:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="265.0" text="Tipo de processo:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="299.0" text="Situação do processo:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="333.0" text="Classificação do processo:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="367.0" text="Data do processo:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="401.0" text="Descrição do processo:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="txtDescricao" editable="false" layoutX="51.0" layoutY="435.0" prefHeight="383.0" prefWidth="800.0" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
+            <Label fx:id="txtCodigo" layoutX="148.0" layoutY="61.0" prefHeight="27.0" prefWidth="147.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtNomeCliente" layoutX="206.0" layoutY="95.0" prefHeight="27.0" prefWidth="640.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtCpfCliente" layoutX="191.0" layoutY="129.0" prefHeight="27.0" prefWidth="147.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtNomeAdvogado" layoutX="233.0" layoutY="163.0" prefHeight="27.0" prefWidth="587.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtOab" layoutX="183.0" layoutY="197.0" prefHeight="27.0" prefWidth="147.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtValor" layoutX="217.0" layoutY="231.0" prefHeight="27.0" prefWidth="147.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtTipo" layoutX="206.0" layoutY="265.0" prefHeight="27.0" prefWidth="147.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtSituacao" layoutX="233.0" layoutY="299.0" prefHeight="27.0" prefWidth="147.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtClassificacao" layoutX="271.0" layoutY="333.0" prefHeight="27.0" prefWidth="147.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtData" layoutX="217.0" layoutY="367.0" prefHeight="27.0" prefWidth="147.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

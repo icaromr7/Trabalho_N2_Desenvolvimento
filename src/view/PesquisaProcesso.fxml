@@ -13,11 +13,11 @@
    <children>
       <Pane layoutY="-2.0" prefHeight="755.0" prefWidth="1604.0">
          <children>
-            <TableView fx:id="tableView" layoutX="325.0" layoutY="256.0" prefHeight="485.0" prefWidth="954.0" tableMenuButtonVisible="true">
+            <TableView fx:id="tableView" layoutX="236.0" layoutY="256.0" prefHeight="485.0" prefWidth="1131.0" tableMenuButtonVisible="true">
               <columns>
                 <TableColumn fx:id="ColunaCodigo" prefWidth="75.0" text="Código" />
                 <TableColumn fx:id="ColunaCliente" prefWidth="75.0" text="Cliente" />
-                  <TableColumn fx:id="ColunaProcesso" prefWidth="75.0" text="Tipo de processo" />
+                  <TableColumn fx:id="ColunaCpfCliente" prefWidth="75.0" text="CPF Cliente" />
                   <TableColumn fx:id="ColunaData" prefWidth="75.0" text="Data" />
               </columns>
                <columnResizePolicy>
@@ -28,9 +28,9 @@
                <font>
                   <Font size="18.0" />
                </font></TextField>
-            <Button fx:id="btnVerDetalhe" layoutX="1149.0" layoutY="207.0" mnemonicParsing="false" onAction="#btnVerDetalheOnAction" styleClass="Btn" stylesheets="@PesquisaProcesso.css" text="Ver detalhes" textFill="WHITE" />
-            <ComboBox layoutX="830.0" layoutY="106.0" prefHeight="39.0" prefWidth="224.0" />
-            <Button layoutX="1115.0" layoutY="106.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="164.0" text="Buscar">
+            <Button fx:id="btnVerDetalhe" layoutX="1237.0" layoutY="207.0" mnemonicParsing="false" onAction="#btnVerDetalheOnAction" styleClass="Btn" stylesheets="@PesquisaProcesso.css" text="Ver detalhes" textFill="WHITE" />
+            <ComboBox fx:id="cbBusca" layoutX="830.0" layoutY="106.0" prefHeight="39.0" prefWidth="224.0" />
+            <Button fx:id="btnBuscar" layoutX="1115.0" layoutY="106.0" mnemonicParsing="false" onAction="#btnBuscarOnAction" prefHeight="39.0" prefWidth="164.0" text="Buscar">
                <font>
                   <Font size="14.0" />
                </font></Button>

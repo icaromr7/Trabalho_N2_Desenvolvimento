@@ -255,7 +255,7 @@ public class CadTipoDeProcessoController implements Initializable{
         this.codCat.setText("");
         this.nomeTipoProcesso.setText("");
     }
-    //Carregar a Tabela com o nome dos atores
+    //Carregar a Tabela com o nome dos tipos de processos
     public void carregarTableViewTpProcesso() throws SQLException{
         tableColumnNomeCat.setCellValueFactory(new PropertyValueFactory<>("tipoDoProcesso"));
         tpdao= new TipoDeProcessoDao();
@@ -263,7 +263,7 @@ public class CadTipoDeProcessoController implements Initializable{
         oblTipos = FXCollections.observableArrayList(tipos);
         this.tableView.setItems(oblTipos);
     }
-    //Selecionar ator
+    //Selecionar Tipo de Processo
     public void selecionarItemTableViewTpProcesso(TipoDeProcesso tp)throws SQLException{
         this.codCat.setText(Integer.toString(tp.getId()));
         this.nomeTipoProcesso.setText(tp.getTipoDoProcesso());

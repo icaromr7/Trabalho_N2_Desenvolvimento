@@ -220,6 +220,158 @@ public class ProcessoDao extends Connect{
         }
         return processos;
     }
+    //Por cpf
+    public ArrayList<Processo> pesquisarPorCpfCliente(String cpfCliente) throws SQLException {
+        ArrayList<Processo> processos = new ArrayList<>();
+        Connection con = null;
+        try {
+            con = this.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM processo WHERE cpf_cliente = ? AND classificacao = 'Público'");
+            ps.setString(1, cpfCliente);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Processo processo = new Processo();
+                processo.setId(rs.getInt("id"));
+                processo.setNome_cliente(rs.getString("nome_cliente"));
+                processo.setCpf_cliente(rs.getString("cpf_cliente"));
+                processo.setId_tipo(rs.getInt("id_tipo"));
+                processo.setData(rs.getDate("data"));
+                processo.setId_adv(rs.getInt("id_advogado"));
+                processo.setSituacao(rs.getString("situacao"));
+                processo.setClassificacao(rs.getString("classificacao"));
+                processo.setDescricao(rs.getString("descricao"));
+                processo.setValor(rs.getDouble("valor"));
+
+                processos.add(processo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            con.close();
+        }
+        return processos;
+    }
+    //Pesquisa por id
+    public Processo pesquisarPorId(int id) throws SQLException {
+        Processo processo = null;
+        Connection con = null;
+        try {
+            con = this.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM processo WHERE id = ? AND classificacao = 'Público'");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                processo = new Processo();
+                processo.setId(rs.getInt("id"));
+                processo.setNome_cliente(rs.getString("nome_cliente"));
+                processo.setCpf_cliente(rs.getString("cpf_cliente"));
+                processo.setId_tipo(rs.getInt("id_tipo"));
+                processo.setData(rs.getDate("data"));
+                processo.setId_adv(rs.getInt("id_advogado"));
+                processo.setSituacao(rs.getString("situacao"));
+                processo.setClassificacao(rs.getString("classificacao"));
+                processo.setDescricao(rs.getString("descricao"));
+                processo.setValor(rs.getDouble("valor"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            con.close();
+        }
+        return processo;
+    }
+    //Por cpf
+    public ArrayList<Processo> pesquisarPorCpfClienteSigiloso(String cpfCliente, int id_adv) throws SQLException {
+        ArrayList<Processo> processos = new ArrayList<>();
+        Connection con = null;
+        try {
+            con = this.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM processo WHERE cpf_cliente = ? AND id_advogado = ? AND classificacao = 'Sigiloso'");
+            ps.setString(1, cpfCliente);
+            ps.setInt(2, id_adv);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Processo processo = new Processo();
+                processo.setId(rs.getInt("id"));
+                processo.setNome_cliente(rs.getString("nome_cliente"));
+                processo.setCpf_cliente(rs.getString("cpf_cliente"));
+                processo.setId_tipo(rs.getInt("id_tipo"));
+                processo.setData(rs.getDate("data"));
+                processo.setId_adv(rs.getInt("id_advogado"));
+                processo.setSituacao(rs.getString("situacao"));
+                processo.setClassificacao(rs.getString("classificacao"));
+                processo.setDescricao(rs.getString("descricao"));
+                processo.setValor(rs.getDouble("valor"));
+
+                processos.add(processo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            con.close();
+        }
+        return processos;
+    }
+    //Pesquisa por id
+    public Processo pesquisarPorIdSigiloso(int id,int id_adv) throws SQLException {
+        Processo processo = null;
+        Connection con = null;
+        try {
+            con = this.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM processo WHERE id = ? AND id_advogado = ? AND classificacao = 'Sigiloso'");
+            ps.setInt(1, id);
+            ps.setInt(2, id_adv);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                processo = new Processo();
+                processo.setId(rs.getInt("id"));
+                processo.setNome_cliente(rs.getString("nome_cliente"));
+                processo.setCpf_cliente(rs.getString("cpf_cliente"));
+                processo.setId_tipo(rs.getInt("id_tipo"));
+                processo.setData(rs.getDate("data"));
+                processo.setId_adv(rs.getInt("id_advogado"));
+                processo.setSituacao(rs.getString("situacao"));
+                processo.setClassificacao(rs.getString("classificacao"));
+                processo.setDescricao(rs.getString("descricao"));
+                processo.setValor(rs.getDouble("valor"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            con.close();
+        }
+        return processo;
+    }
+    //Pesquisa por id
+    public ArrayList<Processo> pesquisarPorPublico() throws SQLException {
+        ArrayList<Processo> processos = new ArrayList<>();
+        Connection con = null;
+        try {
+            con = this.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM processo WHERE classificacao = 'Público'");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Processo processo = new Processo();
+                processo.setId(rs.getInt("id"));
+                processo.setNome_cliente(rs.getString("nome_cliente"));
+                processo.setCpf_cliente(rs.getString("cpf_cliente"));
+                processo.setId_tipo(rs.getInt("id_tipo"));
+                processo.setData(rs.getDate("data"));
+                processo.setId_adv(rs.getInt("id_advogado"));
+                processo.setSituacao(rs.getString("situacao"));
+                processo.setClassificacao(rs.getString("classificacao"));
+                processo.setDescricao(rs.getString("descricao"));
+                processo.setValor(rs.getDouble("valor"));
+
+                processos.add(processo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            con.close();
+        }
+        return processos;
+    }
 
 
 
