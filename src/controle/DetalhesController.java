@@ -1,7 +1,8 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+Classe para ver detalhes de um processo
+Ao selecionar um processo na tela de Pesquisa e clicar em ver detalhes, esta tela será chamada,
+a qual, traz os dados do processo selecionado.
+*/
 package controle;
 
 import dao.AdvogadoDao;

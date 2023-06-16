@@ -1,3 +1,8 @@
+/*
+Controle da tela principal
+Tem a funcionalidade de poder chamar as outras telas de acordo com o que for selecionado.
+Verifica se a pessoa que está logada tem acesso a determinada tela. 
+*/
 package controle;
 
 import dao.AdvogadoDao;
@@ -26,6 +31,9 @@ import model.Usuario;
 import utilidade.Utilidade;
 
 public class TelaPrincipalController implements Initializable{
+    
+    @FXML
+    private Button btnCadAdm;
 
     @FXML
     private Button btnCadAdvogado;
@@ -67,10 +75,23 @@ public class TelaPrincipalController implements Initializable{
     private ResourceBundle rbJanela;
     
     
+    
+     @FXML
+    void btnCadAdmOnAction(ActionEvent event) throws IOException {
+        if(usu.getCargo().equals("Administrador")){
+            btnSelecionado(btnCadAdm,btnCadAdvogado, btnCadProcesso, btnCadTipoDeProcesso, btnPsqProcesso);
+            Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadAdm.fxml"),rbJanela);
+            paneExibir.getChildren().setAll(a);
+        }
+        else{
+            Utilidade.mensagemInformacao("Apenas o administrador tem acesso.");
+        }
+
+    }
     @FXML
     void btnCadAdvogadoOnAction(ActionEvent event) throws IOException {
         if(usu.getCargo().equals("Administrador")){
-            btnSelecionado(btnCadAdvogado, btnCadProcesso, btnCadTipoDeProcesso, btnPsqProcesso);
+            btnSelecionado(btnCadAdvogado, btnCadProcesso, btnCadTipoDeProcesso, btnPsqProcesso,btnCadAdm);
             Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadAdvogado.fxml"),rbJanela);
             paneExibir.getChildren().setAll(a);
         }
@@ -82,7 +103,7 @@ public class TelaPrincipalController implements Initializable{
     @FXML
     void btnCadProcessoOnAction(ActionEvent event) throws IOException {
         if(usu.getCargo().equals("Advogado")){
-            btnSelecionado(btnCadProcesso, btnCadAdvogado, btnCadTipoDeProcesso, btnPsqProcesso);
+            btnSelecionado(btnCadProcesso, btnCadAdvogado, btnCadTipoDeProcesso, btnPsqProcesso,btnCadAdm);
             Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadProcesso.fxml"),rbJanela);
             paneExibir.getChildren().setAll(a);
         }
@@ -95,7 +116,7 @@ public class TelaPrincipalController implements Initializable{
     @FXML
     void btnCadTipoDeProcessoOnAction(ActionEvent event) throws IOException {
         if(usu.getCargo().equals("Administrador")){
-            btnSelecionado(btnCadTipoDeProcesso, btnCadAdvogado, btnCadProcesso, btnPsqProcesso);
+            btnSelecionado(btnCadTipoDeProcesso, btnCadAdvogado, btnCadProcesso, btnPsqProcesso,btnCadAdm);
             Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/CadTipoDeProcesso.fxml"),rbJanela);
             paneExibir.getChildren().setAll(a);
         }
@@ -125,7 +146,7 @@ public class TelaPrincipalController implements Initializable{
             };
             Parent root = FXMLLoader.load(getClass().getResource("/view/TelaLogin.fxml"),rbJanela);     
             Scene scene = new Scene(root);
-
+            stage.setTitle("Login");
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
@@ -133,7 +154,7 @@ public class TelaPrincipalController implements Initializable{
 
     @FXML
     void btnPsqProcessoOnACtion(ActionEvent event) throws IOException {
-        btnSelecionado(btnPsqProcesso, btnCadAdvogado, btnCadProcesso, btnCadTipoDeProcesso);
+        btnSelecionado(btnPsqProcesso, btnCadAdvogado, btnCadProcesso, btnCadTipoDeProcesso,btnCadAdm);
         Pane a = (Pane) FXMLLoader.load(getClass().getResource("/view/PesquisaProcesso.fxml"),rbJanela);
         paneExibir.getChildren().setAll(a);
     }
@@ -169,6 +190,9 @@ public class TelaPrincipalController implements Initializable{
                     else if(key.contains("Advogado")){
                         return adv;
                     }
+                    if( key.contains("stage")){
+                        return stage;
+                    }
                     else{
                         return null;
                     }
@@ -182,7 +206,7 @@ public class TelaPrincipalController implements Initializable{
         
     }
     
-    public void btnSelecionado(Button b1,Button b2,Button b3,Button b4){
+    public void btnSelecionado(Button b1,Button b2,Button b3,Button b4,Button b5){
         b1.setStyle("-fx-background-color:#e0e1dd;" +
      "-fx-border-color: none;" +
      "-fx-border-width: 0px;" +
@@ -192,5 +216,6 @@ public class TelaPrincipalController implements Initializable{
         b2.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
         b3.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
         b4.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
+        b5.setStyle("-fx-background-color: rgba(0, 0, 0, 0.1); -fx-border-color: none; -fx-border-width: 0px;");
     }
 }

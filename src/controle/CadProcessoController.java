@@ -1,9 +1,12 @@
+/*
+Classe para realizar o crud de processo.
+Suas funcionalidades são de incluir, alterar, excluir e pesquisar um processo no banco de dados.
+*/
 package controle;
 
 import dao.AdvogadoDao;
 import dao.ProcessoDao;
 import dao.TipoDeProcessoDao;
-import dao.UsuarioDao;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -26,8 +29,10 @@ import model.Processo;
 import model.TipoDeProcesso;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.function.UnaryOperator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -108,6 +113,8 @@ public class CadProcessoController implements Initializable{
 
     @FXML
     private TextField txtValorProcesso;
+    
+    private static final Pattern ONLY_LETTERS_PATTERN = Pattern.compile("[\\p{L}\\p{M}\\s]+");
 
     @FXML
     void btnAlterarOnAction(ActionEvent event) throws SQLException {
@@ -368,14 +375,14 @@ public class CadProcessoController implements Initializable{
             }
         });
         //Limitar quantidade de caractesres do nome cliente
-        TextFormatter<String> textFormatter = new TextFormatter<>(change -> {
+        UnaryOperator<TextFormatter.Change> filter = change -> {
             String newText = change.getControlNewText();
-            if (newText.length() <= 40) {
+            if (ONLY_LETTERS_PATTERN.matcher(newText).matches() && newText.length() <= 40) {
                 return change;
-            } else {
-                return null;
             }
-        });
+            return null;
+        };
+        TextFormatter<String> textFormatter = new TextFormatter<>(filter);
         txtNomeCliente.setTextFormatter(textFormatter);
         //Limitar quantidade de caractesres do cpf_cliente e só aceitar números
         TextFormatter<String> textFormatter2 = new TextFormatter<>(change -> {
@@ -428,28 +435,31 @@ public class CadProcessoController implements Initializable{
         this.tableView.setItems(oblProcessos);
     }
     //Selecionar advogado
-    public void selecionarItemTableViewProcesso(Processo p)throws SQLException{
+    public void selecionarItemTableViewProcesso(Processo p) throws SQLException {
+    if (p != null) {
+        pdao = new ProcessoDao();
         this.codProcesso.setText(Integer.toString(p.getId()));
         this.txtNomeCliente.setText(p.getNome_cliente());
         this.txtCpfCliente.setText(p.getCpf_cliente());
         adv.setId(p.getId_adv());
         advdao = new AdvogadoDao();
-        adv= advdao.consultar(adv);
+        adv = advdao.consultar(adv);
         this.txtOabAdvogado.setText(Integer.toString(adv.getOab()));
-        this.txtValorProcesso.setText(String.valueOf(p.getValor())+"0");
+        this.txtValorProcesso.setText(String.valueOf(p.getValor()) + "0");
         this.cbSituacao.setValue(p.getSituacao());
         this.cbClassificacao.setValue(p.getClassificacao());
         tpdao = new TipoDeProcessoDao();
         tp = tpdao.consultar(p.getId_tipo());
         this.cbTpProcesso.setValue(tp);
         String data = p.getData().toString();
-        data=data.substring(8,10)+"/"+data.substring(5,7)+"/"+data.substring(0,4);
+        data = data.substring(8, 10) + "/" + data.substring(5, 7) + "/" + data.substring(0, 4);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate ld = LocalDate.parse(data, formatter);
         this.dtDataProcesso.setValue(ld);
-        this.txtDescricao.setText(p.getDescricao()); 
+        this.txtDescricao.setText(p.getDescricao());
         tabPane.getSelectionModel().select(abaCadastro);
     }
+}
     //Atualização de table por pesquisa
     public void carregarTableViewProcessosComColecao(ArrayList<Processo> processos) throws SQLException{
         oblProcessos = FXCollections.observableArrayList(processos);

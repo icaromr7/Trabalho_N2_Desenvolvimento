@@ -1,13 +1,15 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+Classe de conexão com a tabela usuario no banco de dados.
+realiza inclusão, alteração, exclusão e pesquisa nessa tabela.
+*/
+
 package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Connect;
 import model.Usuario;
 
@@ -126,5 +128,79 @@ public class UsuarioDao extends Connect{
         }
         return aux;
     }
+    public ArrayList<Usuario> consultarAdms() throws SQLException{
+        Connection con=null;
+        Usuario aux = new Usuario();
+        PreparedStatement ps= null;
+        ResultSet rs=null;
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        try{
+            con=this.getConnection();
+            ps = con.prepareStatement("SELECT * FROM usuario WHERE cargo='Administrador'");
+            rs=ps.executeQuery();
+            while(rs.next()){
+                aux = new Usuario();
+                aux.setId(rs.getInt("id"));
+                aux.setLogin(rs.getString("login"));
+                aux.setSenha(rs.getString("senha"));
+                aux.setCargo(rs.getString("cargo"));
+                usuarios.add(aux);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            closeConnection(con, ps, rs);           
+        }
+        return usuarios;
+    }
+    //Consultar
+    public ArrayList<Usuario> consultarAdm(String login) throws SQLException{
+        Connection con=null;
+        Usuario aux = new Usuario();
+        PreparedStatement ps= null;
+        ResultSet rs=null;
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        try{
+            con=this.getConnection();
+            ps = con.prepareStatement("SELECT * FROM usuario WHERE login LIKE'%?%' AND cargo='Administrador'");
+            ps.setString(1, login);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                aux = new Usuario();
+                aux.setId(rs.getInt("id"));
+                aux.setLogin(rs.getString("login"));
+                aux.setSenha(rs.getString("senha"));
+                aux.setCargo(rs.getString("cargo"));
+                usuarios.add(aux);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            closeConnection(con, ps, rs);           
+        }
+        return usuarios;
+    }
+    public int obterQuantidadeUsuarios() throws SQLException {
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    int quantidade = 0;
+    
+    try {
+        con = this.getConnection();
+        ps = con.prepareStatement("SELECT COUNT(*) AS quantidade FROM usuario WHERE cargo='Administrador'");
+        rs = ps.executeQuery();
+        
+        if (rs.next()) {
+            quantidade = rs.getInt("quantidade");
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        closeConnection(con, ps, rs);
+    }
+    
+    return quantidade;
+}
     
 }

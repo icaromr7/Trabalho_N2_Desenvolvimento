@@ -1,6 +1,11 @@
+/*
+Classe que controla a tela de Login
+Suas funcionalidades são de verificar se o login e senha estão corretos
+em caso de correto, vai chamar a tela principal.
+No caso de incorreto, apresentará um alerta informando qual é o erro.
+*/
 package controle;
 
-import Main.Trabalho_N2_Desenvolvimento;
 import dao.UsuarioDao;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,6 +15,8 @@ import java.util.Enumeration;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,15 +24,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Usuario;
 import utilidade.Utilidade;
@@ -34,7 +38,7 @@ public class TelaLoginController implements Initializable{
 
     @FXML
     private Button btnEntrar;
-
+    
     @FXML
     private TextField txtLogin;
 
@@ -95,6 +99,7 @@ public class TelaLoginController implements Initializable{
             Scene scene = new Scene(root2);
             stage.setScene(scene);
             stage.setResizable(false);
+            stage.setTitle("Tela Principal");
             //stage.initModality(Modality.APPLICATION_MODAL);
             stage.setX(0);
             stage.setY(0);
@@ -105,6 +110,8 @@ public class TelaLoginController implements Initializable{
         }
         
     }
+    
+    
 
     @Override
     public void initialize(URL location, ResourceBundle rb) {

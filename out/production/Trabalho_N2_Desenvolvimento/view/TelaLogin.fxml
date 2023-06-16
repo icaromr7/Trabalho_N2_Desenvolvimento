@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="bgpane" stylesheets="@TelaLogin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.TelaLoginController">
    <children>
-      <TextField fx:id="txtLogin" layoutX="181.0" layoutY="137.0" prefHeight="25.0" prefWidth="239.0" promptText="Usuário" styleClass="textfield" stylesheets="@TelaLogin.css">
+      <TextField fx:id="txtLogin" layoutX="181.0" layoutY="137.0" prefHeight="25.0" prefWidth="239.0" promptText="Login" styleClass="textfield" stylesheets="@TelaLogin.css">
          <font>
             <Font size="18.0" />
          </font></TextField>

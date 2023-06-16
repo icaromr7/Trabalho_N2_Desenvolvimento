@@ -1,3 +1,8 @@
+/*
+Classe para realizar o crud de Advogado.
+Suas funcionalidades são de incluir, alterar, excluir e pesquisar um advogado no banco de dados.
+*/
+
 package controle;
 
 import dao.AdvogadoDao;
@@ -6,8 +11,10 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -91,6 +98,7 @@ public class CadAdvogadoController implements Initializable{
     private Usuario usu;
     private ArrayList<Advogado> advogados = new ArrayList<>();
     private ObservableList<Advogado> oblAdvogados;
+    private static final Pattern ONLY_LETTERS_PATTERN = Pattern.compile("[\\p{L}\\p{M}\\s]+");
 
     @FXML
     void btnAlterarOnAction(ActionEvent event) throws SQLException {
@@ -173,9 +181,9 @@ public class CadAdvogadoController implements Initializable{
     void btnExcluirOnAction(ActionEvent event) throws SQLException {
         Advogado adv = null;
         boolean retorno;
-        if(CodOAB.getText().length()==0||CodOAB.getText().isEmpty()){
-            Utilidade.mensagemErro("Informe a OAB");
-            CodOAB.setFocusTraversable(true);
+        if(txtID.getText().length()==0||txtID.getText().isEmpty()){
+            Utilidade.mensagemErro("Selecione um advogado na tabela de pesquisa");
+            txtID.setFocusTraversable(true);
         }else{
             advo = new Advogado();
             advodao = new AdvogadoDao();
@@ -208,9 +216,9 @@ public class CadAdvogadoController implements Initializable{
                     limpaDados();
                 }
                 else
-                    Utilidade.mensagemErro("INCLUSÃO DE LOGIN NÃO REALIZADA");
+                    Utilidade.mensagemErro("INCLUSÃO DE ADVOGADO NÃO REALIZADA");
             }catch(SQLException e){
-                Utilidade.mensagemErro("ERRO DE INCLUSÃO DE LOGIN");
+                Utilidade.mensagemErro("ERRO DE INCLUSÃO DE ADVOGADO");
             }
         }
 
@@ -387,14 +395,14 @@ public class CadAdvogadoController implements Initializable{
         });
         txtSenha.setTextFormatter(textFormatter3);   
         //Limitar tamanho do nome
-        TextFormatter<String> textFormatter4 = new TextFormatter<>(change -> {
+        UnaryOperator<TextFormatter.Change> filter = change -> {
             String newText = change.getControlNewText();
-            if (newText.length() <= 40) {
+            if (ONLY_LETTERS_PATTERN.matcher(newText).matches() && newText.length() <= 40) {
                 return change;
-            } else {
-                return null;
             }
-        });
+            return null;
+        };
+        TextFormatter<String> textFormatter4 = new TextFormatter<>(filter);
         nomeAdvogado.setTextFormatter(textFormatter4);
     }
     //Limpar dados da tela

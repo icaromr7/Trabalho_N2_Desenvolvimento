@@ -1,3 +1,7 @@
+/*
+Classe de conexão com a tabela processo no banco de dados.
+realiza inclusão, alteração, exclusão e pesquisa nessa tabela.
+*/
 
 package dao;
 

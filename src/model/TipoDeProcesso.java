@@ -1,4 +1,7 @@
-
+/**
+ * Classe TipoDeProcesso representa um tipo de processo com informações específicas.
+ * Possui métodos para acessar e modificar os atributos do tipo de processo.
+ */
 package model;
 
 public class TipoDeProcesso {

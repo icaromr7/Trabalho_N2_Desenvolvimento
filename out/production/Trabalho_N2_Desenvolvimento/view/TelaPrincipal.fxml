@@ -10,22 +10,22 @@
    <children>
       <Pane fx:id="painel" prefHeight="1010.0" prefWidth="315.0" styleClass="bgpane" stylesheets="@TelaPrincipal.css">
          <children>
-            <Button fx:id="btnCadAdvogado" layoutX="29.0" layoutY="427.0" onAction="#btnCadAdvogadoOnAction" prefHeight="44.0" prefWidth="264.0" styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Cadastrar Advogado" textFill="#fcf5f5">
+            <Button fx:id="btnCadAdvogado" layoutX="29.0" layoutY="376.0" onAction="#btnCadAdvogadoOnAction" prefHeight="44.0" prefWidth="264.0" styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Cadastrar Advogado" textFill="#fcf5f5">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnCadTipoDeProcesso" layoutX="29.0" layoutY="527.0" onAction="#btnCadTipoDeProcessoOnAction" prefHeight="44.0" prefWidth="264.0" styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Cadastrar Tipo de Processo" textFill="#fcf5f5">
+            <Button fx:id="btnCadTipoDeProcesso" layoutX="29.0" layoutY="476.0" onAction="#btnCadTipoDeProcessoOnAction" prefHeight="44.0" prefWidth="264.0" styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Cadastrar Tipo de Processo" textFill="#fcf5f5">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnCadProcesso" layoutX="23.0" layoutY="627.0" onAction="#btnCadProcessoOnAction" prefHeight="44.0" prefWidth="264.0" styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Cadastrar Processo" textFill="#fcf5f5">
+            <Button fx:id="btnCadProcesso" layoutX="23.0" layoutY="576.0" onAction="#btnCadProcessoOnAction" prefHeight="44.0" prefWidth="264.0" styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Cadastrar Processo" textFill="#fcf5f5">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnPsqProcesso" layoutX="23.0" layoutY="727.0" onAction="#btnPsqProcessoOnACtion" prefHeight="44.0" prefWidth="264.0" styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Pesquisar Processo" textFill="#fcf5f5">
+            <Button fx:id="btnPsqProcesso" layoutX="23.0" layoutY="676.0" onAction="#btnPsqProcessoOnACtion" prefHeight="44.0" prefWidth="264.0" styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Pesquisar Processo" textFill="#fcf5f5">
                <font>
                   <Font size="18.0" />
                </font>
@@ -38,11 +38,6 @@
             <Button fx:id="btnDeslogar" layoutX="105.0" layoutY="919.0" mnemonicParsing="false" onAction="#btnDeslogarOnAction" prefHeight="25.0" prefWidth="103.0" styleClass="btnDeslogar" stylesheets="@TelaPrincipal.css" text="Deslogar">
                <font>
                   <Font size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnCadAdm" layoutX="29.0" layoutY="327.0" onAction="#btnCadAdmOnAction" prefHeight="44.0" prefWidth="264.0" styleClass="btn-inicial" stylesheets="@TelaPrincipal.css" text="Cadastrar Administrador" textFill="#fcf5f5">
-               <font>
-                  <Font size="18.0" />
                </font>
             </Button>
          </children>

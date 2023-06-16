@@ -1,3 +1,6 @@
+/*
+Classe com metódos para auxiliar outras classes.
+*/
 package utilidade;
 
 import java.text.ParseException;
@@ -17,6 +20,7 @@ public class Utilidade {
     
     //Msg Informação
     public static void mensagemInformacao(String msg){
+        msg = msg.toUpperCase();
         Alert alert;
         alert= new Alert(AlertType.INFORMATION,msg,ButtonType.OK);
         alert.setTitle("SICOPA");
@@ -25,6 +29,7 @@ public class Utilidade {
     }
     //Msg Erro
     public static void mensagemErro(String msg){
+        msg = msg.toUpperCase();
         Alert alert;
         alert= new Alert(AlertType.ERROR,msg,ButtonType.OK);
         alert.setTitle("SICOPA");

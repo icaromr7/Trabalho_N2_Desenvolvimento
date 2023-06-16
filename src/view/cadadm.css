@@ -1,0 +1,30 @@
+.textfield {
+    -fx-background-color: none;
+    -fx-border-color: black;
+   /* -fx-border-style: none none solid none;*/
+    -fx-border-width : 0px 0px 1px 0px;
+    -fx-text-fill: black;
+    -fx-prompt-text-fill: #383a3b;
+}
+.bgpane{
+ -fx-background-color: whitesmoke;
+
+}
+.Btn {
+    -fx-background-color: #98daf0;
+    -fx-font-family: 'Laksaman-bold';
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-border-color: none;
+    -fx-text-align: center;
+    -fx-text-fill: black;
+    -fx-border-radius: 0px;
+    -fx-background-radius: 20 20 20 20;
+}
+@font-face {
+
+    font-family: 'Laksaman-bold';
+
+    src: url('Laksman-Bold.ttf');
+
+}

@@ -1,3 +1,8 @@
+/**
+ * A classe Connect é responsável por estabelecer conexão com o banco de dados PostgreSQL
+ * e fornecer métodos auxiliares para fechar a conexão, declaração preparada (PreparedStatement)
+ * e resultado (ResultSet).
+ */
 package model;
 
 import java.sql.Connection;

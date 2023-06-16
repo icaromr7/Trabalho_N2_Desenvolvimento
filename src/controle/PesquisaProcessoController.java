@@ -1,3 +1,7 @@
+/*
+Classe para pesquisar processos.
+Tendo as opções de pesquisar por Id do processo ou cpf do cliente.
+*/
 package controle;
 
 import dao.AdvogadoDao;

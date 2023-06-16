@@ -1,3 +1,7 @@
+/**
+ * Classe Processo representa um processo com informações específicas.
+ * Possui métodos para acessar e modificar os atributos do processo.
+ */
 
 package model;
 

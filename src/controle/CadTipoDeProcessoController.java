@@ -1,3 +1,8 @@
+/*
+Classe para realizar o crud de tipo de processo.
+Suas funcionalidades são de incluir, alterar, excluir e pesquisar um tipo de processo no banco de dados.
+*/
+
 package controle;
 
 import dao.TipoDeProcessoDao;
@@ -5,8 +10,10 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -71,6 +78,7 @@ public class CadTipoDeProcessoController implements Initializable{
     private TipoDeProcessoDao tpdao;
     private ArrayList<TipoDeProcesso> tipos = new ArrayList<>();
     private ObservableList<TipoDeProcesso> oblTipos;
+    private static final Pattern ONLY_LETTERS_PATTERN = Pattern.compile("[\\p{L}\\p{M}\\s]+");
 
     @FXML
     void btnAlterarOnAction(ActionEvent event) {
@@ -240,15 +248,15 @@ public class CadTipoDeProcessoController implements Initializable{
             }
         });
         //Limitar dígitos do tipo de processo
-         TextFormatter<String> textFormatter3 = new TextFormatter<>(change -> {
+         UnaryOperator<TextFormatter.Change> filter = change -> {
             String newText = change.getControlNewText();
-            if (newText.length() <= 20) {
+            if (ONLY_LETTERS_PATTERN.matcher(newText).matches() && newText.length() <= 25) {
                 return change;
-            } else {
-                return null;
             }
-        });
-        nomeTipoProcesso.setTextFormatter(textFormatter3);
+            return null;
+        };
+        TextFormatter<String> textFormatter = new TextFormatter<>(filter);
+        nomeTipoProcesso.setTextFormatter(textFormatter);
     }
     //Limpa Dados da tela
     public void limpaDadosTela(){
